@@ -15,6 +15,7 @@ class Layout extends React.Component {
 	
 	toggleSidebar = (event) => {
 		this.setState({
+			// Onside: !Onside TODO Chage
 			side: this.state.side === 'open' ? 'closed' : 'open'
 		});
 	}
