@@ -31,14 +31,29 @@ class Layout extends React.Component {
 						</div>
 						
 						<div className={cx('sidebar', this.state.side)}>
-							<div className={cx('header')}>
-								<h3 className={cx('title', this.state.side)}>
-									Side header
-								</h3>
-							</div>
-							<div className= {cx('content')}>
-								<div> <h3> Side content </h3> </div>
-								<div> <p> User list </p> </div>
+							<div className={cx('row')}>
+								<div className={cx('column')}>
+									<div className={cx('header')}>
+										<h3 className={cx('title', this.state.side)}>
+											Channel header
+										</h3>
+									</div>
+									<div className= {cx('content')}>
+										<div> <h3> Channel content </h3> </div>
+										<div> <p> Channel list </p> </div>
+									</div>
+								</div>
+								<div className={cx('column')}>
+									<div className={cx('header')}>
+									<h3 className={cx('title', this.state.side)}>
+										User header
+									</h3>
+								</div>
+								<div className= {cx('content')}>
+									<div> <h3> User content </h3> </div>
+									<div> <p> User list </p> </div>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
