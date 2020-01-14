@@ -1,0 +1,70 @@
+@import 'styles/utils.scss';
+
+.Template {
+	--landscape-width: 25; // % OR vw for responsive window resizing!
+	--portrait-width: 80vw;
+	--header-height: 4rem;
+	--secs: 0.4s;
+	$bg-left: $oc-gray-7;
+	$bg-main: $oc-gray-8;
+
+	main {
+		display: flex; // Flexbox definition
+		overflow: hidden; // Disable scrolling on layout
+		background: $bg-main; 
+		flex-grow: 1;
+		text-align: center;
+		text-color: $oc-gray-0;
+		.header {
+			background: $bg-main;
+			@media (orientation: landscape) {
+				.title { 
+					transition: left var(--secs), right var(--secs);
+					&.closed { left: var(--header-height); }
+				}
+			}
+			position: relative;
+			height: var(--header-height);
+			text-align: center; // Horizontal center
+			.title { position: absolute; left: 0; right: 0; }
+		}
+		.content {
+			overflow: auto;
+			//box-sizing: border-box;
+			height: calc(100vh - var(--header-height));
+			padding: 1rem;
+		}
+		
+		.left { 
+			z-index: 5;
+			transition: width var(--secs);
+			width: 0;
+			@media (orientation: landscape) {
+				&.open { width: calc(1% * var(--landscape-width)); }
+			}
+			.icon { 
+				position: fixed; 
+				z-index: 10;
+				width: var(--header-height);
+				height: var(--header-height);
+				line-height: var(--header-height);
+				font-size: var(--header-height);
+				text-align: center;
+				user-select: none;
+				cursor: pointer;
+			}
+			.sidebar { 
+				background: $bg-left;
+				&.closed { transform: translateX(-100%); } // <-- Left portrait AND landscape!
+				transition: transform var(--secs); // <-- Portrait AND landscape!
+				@media (orientation: portrait) { width: var(--portrait-width); }
+				@media (orientation: landscape) { width: calc(1vw * var(--landscape-width)); }
+				.header {
+					background: $bg-left;
+					left: var(--header-height);
+					width: calc(100% - var(--header-height));
+				}
+			}
+		}
+	}
+}
