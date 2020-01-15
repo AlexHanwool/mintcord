@@ -11,32 +11,30 @@ const cx = classNames.bind(styles);
 class Template extends Component {
 	
 	state = {
-		side: 'closed',
+		onSide: false
 	}
 	
 	toggleSidebar = () => {
 		this.setState({
-			// TODO: try boolean type var onSide
-			side: this.state.side === 'open' ? 'closed' : 'open'
+			onSide: !this.state.onSide
 		});
 	}
 	
 	render() {
+		const { onSide } = this.state;
 		return (
 			<div className={cx('main-template')}>
-				<div className={cx('left', this.state.side )}>
+				<div className={cx('left', { open: onSide } )}>
 					<div className= {cx('icon')}
 						onClick={this.toggleSidebar} >
 						&equiv;
 					</div>
 					
-					<div className={cx('sidebar', this.state.side)}>
+					<div className={cx('sidebar', { closed: !onSide})}>
 						<div className={cx('row')}>
 							<div className={cx('column')}>
 								<div className={cx('header')}>
-									<h3 className={cx('title', this.state.side)}>
-										Channel header
-									</h3>
+									<h3> Channel header </h3>
 								</div>
 								<div className= {cx('content')}>
 									<Channels />
@@ -44,9 +42,7 @@ class Template extends Component {
 							</div>
 							<div className={cx('column')}>
 								<div className={cx('header')}>
-								<h3 className={cx('title', this.state.side)}>
-									User header
-								</h3>
+								<h3> User header </h3>
 							</div>
 							<div className= {cx('content')}>
 								<Users />
@@ -57,13 +53,11 @@ class Template extends Component {
 			</div>
 			<div>
 				<div className={cx('header')}>
-					<h3 className={cx('title', this.state.side)}>
-						Main header
-					</h3>
+					<h3> Main header </h3>
 				</div>
 				<div className= {cx('content')}>
-					<div> <h3> Main content </h3> </div>
-					<div> <p> Chat Area </p> </div>
+					<h3> Main content </h3>
+					<p> Chat Area </p>
 					<div> a deserunt mollit anim id est laborum. </div>
 				</div>
 			</div>
