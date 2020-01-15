@@ -1,4 +1,7 @@
 @import 'styles/utils.scss';
 
 .Channels {
+	&:hover {
+		backgound: $oc-gray-3;
+	}
 }

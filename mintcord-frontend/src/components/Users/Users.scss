@@ -1,4 +1,7 @@
 @import 'styles/utils.scss';
 
 .Users {
+	&:hover {
+		backgound: $oc-gray-3;
+	}
 }
