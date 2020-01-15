@@ -1,15 +1,21 @@
 import React from 'react';
 import { Router } from 'react-router-dom';
+import { Provider } from 'react-redux';
+
+import configure from 'store/configure';
+import customHistory from 'lib/history';
+
 import App from 'components/App';
 
-import customHistory from 'lib/history';
+const store = configure();
 
 const Root = () => {
   return (
-    <Router history={customHistory}>
-      <App/>
-      {/* hello, world! */}
-    </Router>
+    <Provider store={store}>
+      <Router history={customHistory}>
+        <App/>
+      </Router>
+    </Provider>
   );
 }
 
