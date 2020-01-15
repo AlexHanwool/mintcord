@@ -1,10 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styles from './Template.scss';
 import classNames from 'classnames/bind';
+import Users from 'components/Users';
+import Channels from 'components/Channels';
 
 const cx = classNames.bind(styles);
 
-class Layout extends React.Component {
+class Template extends React.Component {
 	constructor(props) {
 		super(props);
 		
@@ -39,8 +41,7 @@ class Layout extends React.Component {
 										</h3>
 									</div>
 									<div className= {cx('content')}>
-										<div> <h3> Channel content </h3> </div>
-										<div> <p> Channel list </p> </div>
+										<Channels />
 									</div>
 								</div>
 								<div className={cx('column')}>
@@ -50,29 +51,28 @@ class Layout extends React.Component {
 									</h3>
 								</div>
 								<div className= {cx('content')}>
-									<div> <h3> User content </h3> </div>
-									<div> <p> User list </p> </div>
-									</div>
+									<Users />
 								</div>
 							</div>
 						</div>
 					</div>
-					<div>
-						<div className={cx('header')}>
-							<h3 className={cx('title', this.state.side)}>
-								Main header
-							</h3>
-						</div>
-						<div className= {cx('content')}>
-							<div> <h3> Main content </h3> </div>
-							<div> <p> Chat Area </p> </div>
-							<div> a deserunt mollit anim id est laborum. </div>
-						</div>
-					 </div>
-				</main>
-			</div>
+				</div>
+				<div>
+					<div className={cx('header')}>
+						<h3 className={cx('title', this.state.side)}>
+							Main header
+						</h3>
+					</div>
+					<div className= {cx('content')}>
+						<div> <h3> Main content </h3> </div>
+						<div> <p> Chat Area </p> </div>
+						<div> a deserunt mollit anim id est laborum. </div>
+					</div>
+				 </div>
+			</main>
+		</div>
 		);
 	}
 }
 
-export default Layout;
+export default Template;
