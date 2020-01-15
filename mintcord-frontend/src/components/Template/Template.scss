@@ -1,0 +1,62 @@
+@import 'styles/utils.scss';
+
+.main-template {
+	$secs: 0.4s;
+	$landscape-width: 50; // % OR vw for responsive window resizing!
+	$header-height: 4rem;
+	$bg-left: $oc-gray-7;
+	$bg-main: $oc-gray-8;
+
+	display: flex;
+	overflow: hidden;
+	background: $bg-main; 
+	flex-grow: 1;
+	text-align: center;
+	color: $oc-gray-0;
+	.header {
+		position: relative;
+		height: $header-height;
+		text-align: center;
+	}
+	.content {
+		overflow: auto;
+		//box-sizing: border-box;
+		height: calc(100vh - #{$header-height});
+		padding: 1rem;
+	}
+	
+	.left { 
+		transition: width $secs;
+		width: 0;
+		&.open { width: calc(1% * #{$landscape-width}); }
+		.row {
+			width: 100%;
+			display: flex;
+			flex-direction: row;
+			justify-content: center; 
+		}
+		.column {
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			justify-content: center; 
+		}
+		.icon { 
+			position: fixed; 
+			z-index: 10;
+			width: $header-height;
+			height: $header-height;
+			line-height: $header-height;
+			font-size: $header-height;
+			text-align: center;
+			user-select: none;
+			cursor: pointer;
+		}
+		.sidebar { 
+			background: $bg-left;
+			&.closed { transform: translateX(-100%); }
+			transition: transform $secs;
+			width: calc(1vw * #{$landscape-width});
+		}
+	}
+}

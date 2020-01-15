@@ -5,14 +5,15 @@ import { Provider } from 'react-redux';
 import configure from 'store/configure';
 import customHistory from 'lib/history';
 
+import App from 'components/App';
+
 const store = configure();
 
 const Root = () => {
   return (
     <Provider store={store}>
       <Router history={customHistory}>
-        hello, world!
-        {/* <App/> */}
+        <App/>
       </Router>
     </Provider>
   );

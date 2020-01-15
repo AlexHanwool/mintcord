@@ -4,7 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+<<<<<<< HEAD
     "start": "nodemon src/index.js --watch src/",
+=======
+	"start": "node ./src/index.js",
+>>>>>>> devClient
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "AlexHanwool",
