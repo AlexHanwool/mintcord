@@ -1,0 +1,72 @@
+@import 'styles/utils.scss';
+
+.button {
+  display: inline-flex;
+
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: white;
+  border-radius: 0.3rem;
+
+  cursor: pointer;
+  user-select: none; // prevent drag
+  
+  // default theme: blue
+  &.default {
+    background: $oc-blue-6;
+    &:hover {
+      background: $oc-blue-5;
+    }
+    &:active {
+      background: $oc-blue-6;
+    }
+  }
+
+  // theme="gray"
+  &.gray {
+    background: $oc-gray-5;
+    &:hover {
+      background: $oc-gray-4;
+      color: $oc-gray-7;
+    }
+    &:active {
+      background: $oc-gray-5;
+    }
+  }
+  
+  // theme="outline": white outline
+  &.outline {
+    border: 2px solid white;
+    &:hover {
+      background: white;
+      color: $oc-blue-6;
+    }
+    &:active {
+      background: rgba(255,255,255, 0.85);
+      border: 2px solid rgba(255,255,255, 0.85);
+    }
+  }
+
+  &:hover {
+    @include material-shadow(2, 0.5); // show shadow when hovered
+  }
+
+  // disabled button
+  &.disabled {
+    background: $oc-gray-4;
+    color: $oc-gray-6;
+    cursor: default;
+    &:hover, &:active {
+      box-shadow: none;
+      background: $oc-gray-4;
+    }
+  }
+
+  & + & {
+    margin-left: 0.5rem;
+  }
+}
