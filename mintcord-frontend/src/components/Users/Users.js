@@ -7,9 +7,9 @@ const cx = classNames.bind(styles);
 class Users extends React.Component {
 	render() {
 		return (
-			<div className={cx('Users')}>
-				<div> <h3> User content </h3> </div>
-				<div> <p> User list </p> </div>
+			<div className={cx('users')}>
+				<h3> User content </h3>
+				<p> User list </p>
 			</div>
 		);
 	}
