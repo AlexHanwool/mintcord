@@ -5,7 +5,7 @@
 	$landscape-width: 50; // % OR vw for responsive window resizing!
 	$header-height: 4rem;
 	$bg-left: $oc-gray-7;
-	$bg-main: $oc-gray-8;
+	$bg-main: $oc-gray-7;
 
 	display: flex;
 	overflow: hidden;
@@ -17,10 +17,10 @@
 		position: relative;
 		height: $header-height;
 		text-align: center;
+		font-size: 1.5rem;
 	}
 	.content {
 		overflow: auto;
-		//box-sizing: border-box;
 		height: calc(100vh - #{$header-height});
 		padding: 1rem;
 	}
@@ -55,7 +55,7 @@
 		.sidebar { 
 			background: $bg-left;
 			transform: translateX(-100%);
-			&.onSide { transform: translateX(0%); }
+			&.onSide { transform: none; }
 			transition: transform $secs;
 			width: calc(1vw * #{$landscape-width});
 		}

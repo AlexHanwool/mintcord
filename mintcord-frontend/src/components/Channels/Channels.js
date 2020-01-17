@@ -8,9 +8,12 @@ class Channels extends Component {
 	render() {
 		return (
 			<div className={cx('channels')}>
-				<h3> Channel content </h3>
-				<p> Temporary Channel 1 </p>
-				<p> Temporary Channel 2 </p>
+				<div className={cx('header')}>
+					Channel header
+				</div>
+				<div className= {cx('content')}>
+					Channel list
+				</div>
 			</div>
 		);
 	}

@@ -29,39 +29,24 @@ class Template extends Component {
 						onClick={this.toggleSidebar} >
 						&equiv;
 					</div>
-					
 					<div className={cx('sidebar', { onSide } )}>
-						<div className={cx('row')}>
-							<div className={cx('column')}>
-								<div className={cx('header')}>
-									<h3> Channel header </h3>
-								</div>
-								<div className= {cx('content')}>
-									<Channels />
-								</div>
-							</div>
-							<div className={cx('column')}>
-								<div className={cx('header')}>
-								<h3> User header </h3>
-							</div>
-							<div className= {cx('content')}>
-								<Users />
-							</div>
+						<div className={cx('row')}>	
+							<Channels />
+							<Users />
 						</div>
 					</div>
 				</div>
-			</div>
-			<div>
-				<div className={cx('header')}>
-					<h3> Main header </h3>
+			
+				<div>
+					<div className={cx('header')}>
+						Main header
+					</div>
+					<div className= {cx('content')}>
+						<div> Chat area </div>
+						<div> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </div>
+					</div>
 				</div>
-				<div className= {cx('content')}>
-					<h3> Main content </h3>
-					<p> Chat Area </p>
-					<div> a deserunt mollit anim id est laborum. </div>
-				</div>
 			</div>
-		</div>
 		);
 	}
 }
