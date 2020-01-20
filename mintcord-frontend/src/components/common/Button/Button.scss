@@ -15,14 +15,14 @@
   cursor: pointer;
   user-select: none; // prevent drag
   
-  // default theme: blue
+  // default theme: indigo
   &.default {
-    background: $oc-blue-6;
+    background: $oc-indigo-3;
     &:hover {
-      background: $oc-blue-5;
+      background: $oc-indigo-4;
     }
     &:active {
-      background: $oc-blue-6;
+      background: $oc-indigo-5;
     }
   }
 
@@ -53,6 +53,16 @@
 
   &:hover {
     @include material-shadow(2, 0.5); // show shadow when hovered
+  }
+
+  // full width
+  &.fullWidth {
+    width: 100%;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    font-size: 1.125rem;
+    margin-top: 1rem;
+    justify-content: center;
   }
 
   // disabled button

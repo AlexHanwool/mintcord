@@ -1,25 +1,26 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import styles from './LoginForm.scss';
+import styles from './JoinForm.scss';
 import classNames from 'classnames/bind';
 
 import Button from 'components/common/Button';
 
 const cx = classNames.bind(styles);
 
-const LoginForm = ({ onChange, onSignIn, onSignUp, onKakao }) => {
+const JoinForm = ({ onChange, onSignIn, onSignUp, onKakao }) => {
 
   return (
-    <div className={cx('login-form')}>
+    <div className={cx('join-form')}>
       <input placeholder="Email address" />
+      <input placeholder="Nickname" />
       <input placeholder="password..." />
-      <Button fullWidth>Sign In</Button>
-      <div className={cx('login-footer')}>
-        <Link to="/join">Join us!</Link>
+      <Button fullWidth>Sign Up</Button>
+      <div className={cx('join-footer')}>
+        <Link to="/join">login</Link>
       </div>
     </div>
   )
 }
 
-export default LoginForm;
+export default JoinForm;

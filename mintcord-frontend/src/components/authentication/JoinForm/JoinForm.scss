@@ -1,6 +1,6 @@
 @import 'styles/utils.scss';
 
-.login-form {
+.join-form {
   input {
     font-size: 1rem;
     color: $oc-gray-1;
@@ -18,7 +18,7 @@
     }
   }
 
-  .login-footer {
+  .join-footer {
     margin-top: 2rem;
     text-align: right;
     a {
