@@ -3,8 +3,6 @@ import React, { Component } from 'react';
 import styles from './Chat.scss';
 import classNames from 'classnames/bind';
 
-//import { Input } from 'semantic-ui-react'; 
-
 const cx = classNames.bind(styles);
 
 class Chat extends Component {
@@ -12,7 +10,7 @@ class Chat extends Component {
 		message: '',
 	};
 
-  	handleMessageChange = (event) => {
+  handleMessageChange = (event) => {
 		this.setState({message: event.target.value});
 	}
 	
@@ -38,7 +36,7 @@ class Chat extends Component {
 					value={this.state.message}
 					onChange={handleMessageChange}
 				/>
-				<button onClick={onClickSend}> Send </button>
+				<button onClick={onClickSend}>Send</button>
 			</div>
 		);
 	}
