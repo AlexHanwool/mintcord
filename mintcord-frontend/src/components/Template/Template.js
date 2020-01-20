@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import styles from './Template.scss';
 import classNames from 'classnames/bind';
 
+import mainIcon from './main-icon.png';
+
 import Users from 'components/Users';
 import Channels from 'components/Channels';
 import Chat from 'components/Chat';
@@ -21,7 +23,7 @@ const Template = () => {
 			<div className={cx('left', { onSide } )}>
 				<div className= {cx('icon')}
 					onClick={toggleSidebar} >
-					&equiv;
+					<img src={mainIcon} />
 				</div>
 				<div className={cx('sidebar', { onSide } )}>
 					<div className={cx('row')}>	
