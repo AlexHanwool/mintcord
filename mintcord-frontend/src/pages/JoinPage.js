@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Home = () => {
+const JoinPage = () => {
   return (
     <>
-      Home Page
+      Join
     </>
   );
 }
 
-export default Home;
+export default JoinPage;
