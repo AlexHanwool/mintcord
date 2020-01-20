@@ -1,6 +1,6 @@
 @import 'styles/utils.scss';
 
-.join-form {
+.auth-form {
   input {
     font-size: 1rem;
     color: $oc-gray-1;
@@ -18,9 +18,8 @@
     }
   }
 
-  .join-footer {
+  .auth-footer {
     margin-top: 2rem;
-    text-align: right;
     a {
       color: $oc-indigo-3;
       &:hover {
