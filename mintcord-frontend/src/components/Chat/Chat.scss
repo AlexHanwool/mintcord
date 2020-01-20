@@ -1,6 +1,10 @@
 @import 'styles/utils.scss';
 
 .chat {
+	.chat-log {
+		background: $oc-yellow-0;
+	}
+
 	input {
 		outline: none;
 		border-radius: 0.3rem;
@@ -10,8 +14,5 @@
 		color: $oc-gray-2;
 
 		background: $oc-gray-5;
-	}
-	.chat-log {
-		background: $oc-yellow-0;
 	}
 }
