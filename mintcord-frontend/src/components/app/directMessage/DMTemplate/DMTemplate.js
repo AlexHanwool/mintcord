@@ -13,7 +13,12 @@ const DMTemplate = ({ match }) => {
   return (
     <div className={cx('dm-template')}>
       <div className={cx('dm-list')}>
-        DMTemplate
+        <div className={cx('main')}>
+          DMTemplate
+        </div>
+        <div className={cx('footer')}>
+
+        </div>
       </div>
       <Route path={`${match.path}/main`} component={DMFriendsList} />
       <Route path={`${match.path}/@:userId`} component={DMChat} /> 

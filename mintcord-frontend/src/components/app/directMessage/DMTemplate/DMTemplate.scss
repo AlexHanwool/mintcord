@@ -5,7 +5,15 @@
   display: flex;
   
   .dm-list {
-    width: 9rem;
+    display: block;
+    width: 15rem;
     background: $oc-gray-7;
+
+    .main {
+      height: calc(100vh - 5rem);
+    }
+    .footer {
+      height: 5rem;
+    }
   }
 }

@@ -10,12 +10,8 @@ const cx = classNames.bind(styles);
 const AppTemplate = ({ children }) => {
   return (
     <div className={cx('app-template')}>
-      {/* <div className={cx('channel-list')}> */}
       <ChannelList />
-      {/* </div> */}
-      {/* <div className={cx('channel-route')}> */}
-        {children}
-      {/* </div> */}
+      {children}
     </div>
   );
 };

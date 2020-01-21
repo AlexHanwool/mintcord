@@ -2,15 +2,5 @@
 
 .app-template {
   display: flex;
-
-  .channel-list {
-    background: $oc-gray-8;
-    width: 6rem;
-
-  }
-
-  // .channel-route {
-  //   display: flex;
-  //   flex: 1;
-  // }
+  height: 100vh;
 }

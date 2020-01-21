@@ -1,6 +1,14 @@
 @import 'styles/utils.scss';
 
 .channel-list {
+  display: block;
   background: $oc-gray-8;
-  width: 6rem;
+  width: 4.5rem;
+  padding-right: 0.75rem;
+
+  overflow-y: auto;
+}
+
+.channel-item {
+  
 }
