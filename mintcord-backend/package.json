@@ -4,7 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+<<<<<<< HEAD
+    "start": "nodemon src/index.js --watch src/",
+=======
 	"start": "node ./src/index.js",
+>>>>>>> devClient
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "AlexHanwool",
@@ -22,5 +26,8 @@
     "passport-local": "^1.0.0",
     "sequelize": "^5.21.3",
     "socket.io": "^2.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
   }
 }

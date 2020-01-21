@@ -1,0 +1,31 @@
+@import 'styles/utils.scss';
+
+.auth-template {
+  display: flex;
+  background-color: $oc-gray-8;
+  background-image: url('/main-background-mint.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  align-items: center;
+  justify-content: center;
+
+  .auth-area {
+    padding: 2rem;
+    width: 400px;
+    background: $oc-gray-7;
+    border-radius: 0.2rem;
+
+    @include material-shadow(2, 0.5);
+
+    .logo {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+  }
+}
