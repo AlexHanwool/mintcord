@@ -1,0 +1,15 @@
+@import 'styles/utils.scss';
+
+.app-template {
+  display: flex;
+
+  .channel-list {
+    background: $oc-gray-7;
+    width: 6rem;
+
+  }
+
+  .channel-route {
+    flex: 1;
+  }
+}

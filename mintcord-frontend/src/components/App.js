@@ -6,6 +6,7 @@ import Template from 'components/Template';
 import Home from 'pages/Home';
 import LoginPage from 'pages/LoginPage';
 import JoinPage from 'pages/JoinPage';
+import AppPage from 'pages/AppPage';
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
       <Route path="/login" component={LoginPage} />
       <Route path="/join" component={JoinPage} />
       <Route path="/app/@:username?" component={Template} />
+      <Route path="/dev" component={AppPage} />
     </>
   )
 }
