@@ -4,12 +4,13 @@
   display: flex;
 
   .channel-list {
-    background: $oc-gray-7;
+    background: $oc-gray-8;
     width: 6rem;
 
   }
 
-  .channel-route {
-    flex: 1;
-  }
+  // .channel-route {
+  //   display: flex;
+  //   flex: 1;
+  // }
 }

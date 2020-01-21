@@ -1,0 +1,11 @@
+@import 'styles/utils.scss';
+
+.dm-template {
+  flex: 1;
+  display: flex;
+  
+  .dm-list {
+    width: 9rem;
+    background: $oc-gray-7;
+  }
+}

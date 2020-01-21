@@ -2,12 +2,12 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 
 import AppTemplate from 'components/app/AppTemplate';
-import DMTemplate from 'components/app/DMTemplate';
+import DMTemplate from 'components/app/directMessage/DMTemplate';
 
 const AppPage = ({ match }) => {
   return (
     <AppTemplate>
-      <Route path={`${match.path}/1`} component={DMTemplate} />
+      <Route path={`${match.path}/DM`} component={DMTemplate} />
       {/* <Route path="/route2" component={} /> */}
     </AppTemplate>
   );
