@@ -5,10 +5,37 @@
   background: $oc-gray-8;
   width: 4.5rem;
   padding-right: 0.75rem;
-
-  overflow-y: auto;
 }
 
 .channel-item {
+  display: flex;
+  width: 3.75rem;
+  height: 3rem;
+  line-height: 3rem;
+  font-size: 3rem;
+  text-align: center;
+  user-select: none;
+  cursor: pointer;
+
   
+  &:hover .unread{
+    background-color: $oc-gray-0;
+  }
+
+  .unread {
+    width: 0.75rem;
+    transition: background-color 0.4s;
+  }
+
+  img {
+    padding: 0.5rem;
+    width: 3rem;
+    height: 100%;
+
+    border-radius: 50%;
+    transition: border-radius 0.4s;
+    &:hover {
+      border-radius: 40%;
+    }
+  }
 }

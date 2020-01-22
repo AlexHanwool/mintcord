@@ -26,14 +26,21 @@ const ChannelList = () => {
     <div className={cx('channel-list')}>
       main
       <hr/>
-      CL
+      <ChannelItem />
+      <ChannelItem />
+      <ChannelItem />
     </div>
   );
 };
 
-const ChannelItem = () => {
+const ChannelItem = ({ channelName, channelId }) => {
 
-  return;
+  return (
+    <div className={cx('channel-item')}>
+      <div className={cx('unread')}></div>
+      <img src="/main-icon.png" />
+    </div>
+  );
 };
 
 export default ChannelList;
