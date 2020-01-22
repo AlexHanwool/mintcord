@@ -27,17 +27,17 @@ const ChannelList = () => {
       main
       <hr/>
       <ChannelItem />
-      <ChannelItem />
+      <ChannelItem unread/>
       <ChannelItem />
     </div>
   );
 };
 
-const ChannelItem = ({ channelName, channelId }) => {
+const ChannelItem = ({ channelName, channelId, unread }) => {
 
   return (
     <div className={cx('channel-item')}>
-      <div className={cx('unread')}></div>
+      <div className={cx('selector', { unread })}></div>
       <img src="/main-icon.png" />
     </div>
   );

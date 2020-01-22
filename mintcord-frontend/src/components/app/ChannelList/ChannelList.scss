@@ -4,33 +4,41 @@
   display: block;
   background: $oc-gray-8;
   width: 4.5rem;
-  padding-right: 0.75rem;
+  padding-right: 0.25rem;
 }
 
 .channel-item {
   display: flex;
-  width: 3.75rem;
-  height: 3rem;
-  line-height: 3rem;
-  font-size: 3rem;
+  width: 4.25rem;
+  height: 4rem;
+  line-height: 4rem;
+  font-size: 4rem;
   text-align: center;
+  align-items: center;
   user-select: none;
-  cursor: pointer;
-
   
-  &:hover .unread{
+  &:hover .selector{
     background-color: $oc-gray-0;
+    height: 60%;
   }
 
-  .unread {
-    width: 0.75rem;
+  .selector {
+    width: 0.25rem;
+    height: 10%;
+    border-radius: 0 0.5rem 0.5rem 0;
     transition: background-color 0.4s;
+    transition: height 0.4s;
+
+    &.unread {
+      background-color: $oc-gray-0;
+    }
   }
 
   img {
     padding: 0.5rem;
-    width: 3rem;
+    width: 4rem;
     height: 100%;
+    cursor: pointer;
 
     border-radius: 50%;
     transition: border-radius 0.4s;
