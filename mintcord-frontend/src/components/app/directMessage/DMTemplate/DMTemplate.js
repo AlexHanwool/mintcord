@@ -6,20 +6,14 @@ import classNames from 'classnames/bind';
 
 import DMChat from 'components/app/directMessage/DMChat';
 import DMFriendsList from 'components/app/directMessage/DMFriendsList';
+import DMMenu from 'components/app/directMessage/DMMenu';
 
 const cx = classNames.bind(styles);
 
 const DMTemplate = ({ match }) => {
   return (
     <div className={cx('dm-template')}>
-      <div className={cx('dm-list')}>
-        <div className={cx('main')}>
-          DMTemplate
-        </div>
-        <div className={cx('footer')}>
-
-        </div>
-      </div>
+      <DMMenu />
       <Route path={`${match.path}/main`} component={DMFriendsList} />
       <Route path={`${match.path}/@:userId`} component={DMChat} /> 
     </div>

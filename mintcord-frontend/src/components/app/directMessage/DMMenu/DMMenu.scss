@@ -1,0 +1,37 @@
+@import 'styles/utils.scss';
+
+$header-height: 3rem;
+$footer-height: 4rem;
+
+.dm-menu {
+  display: block;
+  width: 15rem;
+  background: $oc-gray-7;
+
+  .header {
+    height: $header-height;
+    border-bottom: 1px solid $oc-gray-8;
+  }
+  .main {
+    height: calc(100vh - #{$header-height} - #{$footer-height});
+    padding: 0.75rem;
+
+    .button {
+      background-color: $oc-gray-7;
+      font-size: 0.9rem;
+      color: $oc-gray-1;
+      &:hover {
+        background: darken($color: $oc-gray-7, $amount: 2);
+      }
+      img {
+        flex:0.3;
+        width: 1.5rem;
+        height: 1.5rem;
+      }
+    }
+  }
+  .footer {
+    height: $footer-height;
+    background: darken($color: $oc-gray-7, $amount: 3);
+  }
+}

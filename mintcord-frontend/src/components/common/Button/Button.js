@@ -17,7 +17,7 @@ const Button = ({
   return (
     <Element 
       to={to} 
-      className={cx('button', theme, { fullWidth}, { disabled })} 
+      className={cx('button', theme, { fullWidth }, { disabled })} 
       onClick={disabled ? () => null : onClick}>
       {children}
     </Element>
