@@ -1,0 +1,35 @@
+@import 'styles/utils.scss';
+
+.friend-card {
+  display: flex;
+  height: 5rem;
+  border-radius: 0.5rem;
+  align-items: center;
+
+  .friend-icon {
+    flex: 0.15;
+    text-align: center;
+    
+    img {
+      width: 48px;
+      height: 48px;
+      vertical-align: middle;
+      border-radius: 50%;
+    }
+  }
+
+  .friend-name {
+    flex: 0.15;
+
+  }
+
+  .friend-menu {
+    display: flex;
+    justify-content: flex-end;
+    flex: 0.7;
+  }
+
+  &:hover {
+    background-color: lighten($oc-gray-6, $amount: 4);
+  }
+}
