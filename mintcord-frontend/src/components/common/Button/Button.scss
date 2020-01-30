@@ -55,20 +55,24 @@
   &.circle {
     width: 3rem;
     height: 3rem;
+    padding: 0;
     border-radius: 50%;
-    
-    img {
+    align-items: center;
+    justify-content: center;
+
+    svg {
       width: 50%;
       height: 50%;
+      fill: $oc-gray-3;
     }
-    // &:hover {
-    //   background-color: $oc-blue-6;
-    // }
+    &:hover {
+      background-color: lighten($oc-gray-6, $amount: 6);
+      svg {
+        fill: $oc-gray-1;
+      }
+    }
     
     &.hover-red {
-      // img {
-
-      // }
       &:hover {
         background-color: $oc-red-5;
       }

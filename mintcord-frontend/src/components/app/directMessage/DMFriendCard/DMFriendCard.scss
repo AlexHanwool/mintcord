@@ -5,6 +5,7 @@
   height: 5rem;
   border-radius: 0.5rem;
   align-items: center;
+  cursor: pointer;
 
   .friend-icon {
     width: 5rem;
@@ -20,6 +21,14 @@
 
   .friend-name {
     width: 20rem;
+    color: $oc-gray-0;
+    font-weight: 600;
+    user-select: none;
+    
+    span {
+      color: $oc-gray-4;
+      font-weight: 400;
+    }
   }
 
   .friend-menu {

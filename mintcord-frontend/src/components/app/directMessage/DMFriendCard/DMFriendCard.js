@@ -4,6 +4,7 @@ import styles from './DMFriendCard.scss';
 import classNames from 'classnames/bind';
 
 import Button from 'components/common/Button';
+import { RemoveIcon } from 'icons';
 
 const cx = classNames.bind(styles);
 
@@ -21,7 +22,7 @@ const DMFriendCard = ({ friend }) => {
     <>
       <Button theme="circle">Me</Button>
       <Button theme="circle">Ca</Button>
-      <Button theme={["circle", "hover-red"]}>Rm</Button>
+      <Button theme={["circle", "hover-red"]}><RemoveIcon /></Button>
     </>
     : null;
 
@@ -34,7 +35,8 @@ const DMFriendCard = ({ friend }) => {
         <img src="/icons/icon-person-anon.png" />
       </div>
       <div className={cx('friend-name')}>
-        {nickname}#<span>{userId}</span>
+        {nickname}
+        {isHover? <span>#{userId}</span> : null}
       </div>
       <div className={cx('friend-menu')}>
         {menuButtonSet}
