@@ -7,7 +7,7 @@
   align-items: center;
 
   .friend-icon {
-    flex: 0.15;
+    width: 5rem;
     text-align: center;
     
     img {
@@ -19,14 +19,14 @@
   }
 
   .friend-name {
-    flex: 0.15;
-
+    width: 20rem;
   }
 
   .friend-menu {
     display: flex;
     justify-content: flex-end;
-    flex: 0.7;
+    flex: 1;
+    padding-right: 1.5rem;
   }
 
   &:hover {

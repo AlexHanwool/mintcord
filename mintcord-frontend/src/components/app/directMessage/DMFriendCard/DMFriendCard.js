@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import styles from './DMFriendCard.scss';
 import classNames from 'classnames/bind';
 
+import Button from 'components/common/Button';
+
 const cx = classNames.bind(styles);
 
 const DMFriendCard = ({ friend }) => {
@@ -14,6 +16,14 @@ const DMFriendCard = ({ friend }) => {
   const toggleMenu = (event) => {
     setIsHover(!isHover);
   }
+
+  const menuButtonSet = isHover?
+    <>
+      <Button theme="circle">Me</Button>
+      <Button theme="circle">Ca</Button>
+      <Button theme={["circle", "hover-red"]}>Rm</Button>
+    </>
+    : null;
 
   return (
     <div className={cx('friend-card')}
@@ -27,7 +37,7 @@ const DMFriendCard = ({ friend }) => {
         {nickname}#<span>{userId}</span>
       </div>
       <div className={cx('friend-menu')}>
-        {isHover? <button>hover!</button> : null}
+        {menuButtonSet}
       </div>
     </div>
   );

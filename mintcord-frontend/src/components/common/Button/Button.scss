@@ -51,6 +51,33 @@
     }
   }
 
+  // theme="circle"
+  &.circle {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    
+    img {
+      width: 50%;
+      height: 50%;
+    }
+    // &:hover {
+    //   background-color: $oc-blue-6;
+    // }
+    
+    &.hover-red {
+      // img {
+
+      // }
+      &:hover {
+        background-color: $oc-red-5;
+      }
+    }
+  }
+
+  // theme="circle-red"
+  // can separate sub classname?
+
   // &:hover {
   //   @include material-shadow(2, 0.5); // show shadow when hovered
   // }
