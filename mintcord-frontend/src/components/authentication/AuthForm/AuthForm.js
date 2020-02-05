@@ -8,25 +8,34 @@ import Button from 'components/common/Button';
 
 const cx = classNames.bind(styles);
 
-const AuthForm = ({ formType }) => {
+const AuthForm = ({ formType, onChange, onSubmit }) => {
 
   const buttonText = {
     login: 'Sign In',
-    join: 'Sign Up'
+    register: 'Sign Up'
   }
   const footerStyle = formType === 'login' ?
     { textAlign: 'right' } : { textAlign: 'left' };
 
   return (
     <div className={cx('auth-form')}>
-      <input placeholder="Email address" />
-      { formType === 'join' ? 
-        <input placeholder="Nickname" /> : null }
-      <input placeholder="password..." />
-      <Button fullWidth>{buttonText[formType]}</Button>
+      <input
+        name="userEmail"
+        onChange={onChange}
+        placeholder="Email address" />
+      { formType === 'register' ? 
+        <input
+          name="nickname"
+          onChange={onChange} 
+          placeholder="Nickname" /> : null }
+      <input
+        name="password"
+        onChange={onChange}
+        placeholder="password..." />
+      <Button fullWidth onClick={onSubmit}>{buttonText[formType]}</Button>
       <div className={cx('auth-footer')} style={footerStyle}>
         { formType ==='login' ? 
-          <Link to="/join">Join us!</Link> :
+          <Link to="/register">Join us!</Link> :
           <Link to="/login">sign in</Link> }
       </div>
     </div>

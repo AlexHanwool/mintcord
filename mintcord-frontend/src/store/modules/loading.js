@@ -21,4 +21,4 @@ export default handleActions({
     ...state,
     [action.payload]: false
   })
-}, initialState)
+}, initialState);

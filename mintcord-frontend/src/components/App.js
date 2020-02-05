@@ -5,7 +5,7 @@ import Template from 'components/Template';
 // TODO: index.js at pages
 import Home from 'pages/Home';
 import LoginPage from 'pages/LoginPage';
-import JoinPage from 'pages/JoinPage';
+import RegisterPage from 'pages/RegisterPage';
 import AppPage from 'pages/AppPage';
 
 const App = () => {
@@ -13,7 +13,7 @@ const App = () => {
     <>
       <Route exact path="/" component={Home} />
       <Route path="/login" component={LoginPage} />
-      <Route path="/join" component={JoinPage} />
+      <Route path="/register" component={RegisterPage} />
       <Route path="/app/@:username?" component={Template} />
       <Route path="/dev" component={AppPage} />
     </>
