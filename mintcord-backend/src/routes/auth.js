@@ -12,18 +12,29 @@ router.post('/join', isNotLoggedIn, async (req, res, next) => {
   try {
     const exUser = await User.findOne({ where: { userEmail } });
     if (exUser) {
-      return res.redirect('/');
+      return res.status(409).send();  // Conflict
     }
     
     const hash = await bcrypt.hash(password, 8);
-    await User.create({
+
+    User.create({
       userEmail, nickname, password: hash,
+    }).then(user => {
+      return res.status(200).json({
+        userId: user.userId,
+        userEmail: user.userEmail,
+        nickname: user.nickname
+      });
     });
 
-    // return res.redirect('/');
-    return res.status(200).json({
-      result: "success",
-    });
+    // await User.create({
+    //   userEmail, nickname, password: hash,
+    // });
+
+    // // return res.redirect('/');
+    // return res.status(200).json({
+    //   result: "success"
+    // });
   }
   catch (error) {
     console.error(error);
@@ -39,8 +50,8 @@ router.post('/login', isNotLoggedIn, (req, res, next) => {
       return next(authError);
     }
     if (!user) {
-      console.log('cannot find user');
-      return res.status(403);
+      console.log('user does not exist');
+      return res.status(403).send();
     }
     return req.login(user, (loginError) => {
       if (loginError) {
@@ -48,17 +59,22 @@ router.post('/login', isNotLoggedIn, (req, res, next) => {
         return next(loginError);
       }
       // return res.redirect('/');
+      // return res.status(200).json({
+      //   result: "success",
+      //   user:{
+      //     userId: user.userId,
+      //     userEmail: user.userEmail,
+      //     nickname: user.nickname
+      //   },
+      // });
       return res.status(200).json({
-        result: "success",
-        user:{
-          userId: user.userId,
-          userEmail: user.userEmail,
-          nickname: user.nickname
-        },
+        userId: user.userId,
+        userEmail: user.userEmail,
+        nickname: user.nickname
       });
     });
   })(req, res, next);
-})
+});
 
 router.get('/kakao', passport.authenticate('kakao'));
 
@@ -73,7 +89,6 @@ router.get('/kakao/callback',
   //   },
   // });
   res.redirect('/Lobby');
-  // res.redirect('http://localhost:3000/Lobby');
 });
 
 router.get('/logout', isLoggedIn, (req, res) => {
@@ -84,24 +99,17 @@ router.get('/logout', isLoggedIn, (req, res) => {
   })
 });
 
-router.get('/myinfo', isLoggedIn, (req, res) => {
+router.get('/check', isLoggedIn, (req, res) => {
   const user = req.user;
   if (user) {
-    res.status(200).json({
-      result: "success",
-      user: {
-        userEmail: user.userEmail,
-        userId: user.userId,
-        nickname: user.nickname
-      },
+    return res.status(200).json({
+      userId: user.userId,
+      userEmail: user.userEmail,
+      nickname: user.nickname
     });
   }
-  else { // have to destrory session?
-    res.json({
-      result: "failure",
-      message: "cannot find user"
-    });
-  }
+  // have to destrory session?
+  return res.status(401).send();  // Unauthorized
 });
 
 module.exports = router;

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { register } from 'store/modules/auth';
+import { register, initializeForm } from 'store/modules/auth';
 import AuthForm from 'components/authentication/AuthForm';
 
 const RegisterForm = () => {
@@ -9,6 +9,12 @@ const RegisterForm = () => {
   // TODO?: move form state to redux store to prevent blowing whole form by mistake
   const [form, setForm] = 
     useState({ userEmail: '', nickname: '', password: '' });
+  const { auth, authError } = useSelector(({ auth }) => {
+    return {
+      auth: auth.auth,
+      authError: auth.authError
+    };
+  });
   const dispatch = useDispatch();
 
   const onChange = (event) => {
@@ -27,11 +33,28 @@ const RegisterForm = () => {
     dispatch(register(form));
   }
 
+  useEffect(() => {
+    dispatch(initializeForm());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (authError) {
+      console.log('register failure');
+      console.log(authError);
+      return;
+    }
+    if (auth) {
+      console.log('register success');
+      return;
+    }
+  }, [auth, authError]);
+
   return (
     <AuthForm 
       formType="register"
       onChange={onChange}
       onSubmit={onSubmit}
+      error={error}
     />
   );
 };

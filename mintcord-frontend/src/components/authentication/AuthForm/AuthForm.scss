@@ -21,7 +21,10 @@
     &:-webkit-autofill:focus {
       -webkit-text-fill-color: $oc-gray-1;
       -webkit-box-shadow: 0 0 0 30px $oc-gray-7 inset !important;
-    } 
+    }
+    &:-webkit-autofill::first-line {
+      font-size: 1rem;
+    }
   }
 
   .auth-footer {

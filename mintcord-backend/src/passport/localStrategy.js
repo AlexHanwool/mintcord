@@ -18,7 +18,7 @@ module.exports = (passport) => {
           done(null, false, { message: 'password incorrect' });
       }
       else {
-        done(null, false, { message: 'please join first' });
+        done(null, false, { message: 'please register first' });
       }
     }
     catch (error) {

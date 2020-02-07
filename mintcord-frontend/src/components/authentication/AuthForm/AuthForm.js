@@ -8,8 +8,8 @@ import Button from 'components/common/Button';
 
 const cx = classNames.bind(styles);
 
-const AuthForm = ({ formType, onChange, onSubmit }) => {
-
+const AuthForm = ({ formType, onChange, onSubmit, error }) => {
+  // TODO: error message styling
   const buttonText = {
     login: 'Sign In',
     register: 'Sign Up'
@@ -32,6 +32,7 @@ const AuthForm = ({ formType, onChange, onSubmit }) => {
         name="password"
         onChange={onChange}
         placeholder="password..." />
+      {error && <span>{error}</span>}
       <Button fullWidth onClick={onSubmit}>{buttonText[formType]}</Button>
       <div className={cx('auth-footer')} style={footerStyle}>
         { formType ==='login' ? 

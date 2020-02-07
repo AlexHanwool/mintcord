@@ -14,4 +14,4 @@ export default handleActions({
   [ACTION_TYPE]: (state, action) => {
     return state;
   },
-}, initialState)
+}, initialState);
