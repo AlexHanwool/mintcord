@@ -33,8 +33,7 @@ export default handleActions({
       auth
     };
   },
-  [REGISTER_FAILURE]: (state, action) => {
-    const error = action.payload.stack;
+  [REGISTER_FAILURE]: (state, { payload: error }) => {
     return {
       ...state,
       authError: error
@@ -49,7 +48,7 @@ export default handleActions({
     }
   },
   [LOGIN_FAILURE]: (state, action) => {
-    const { error } = action.payload;
+    const error = action.payload; // same as REGISTER_FAILURE
     return {
       ...state,
       authError: error

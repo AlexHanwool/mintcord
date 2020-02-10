@@ -41,8 +41,8 @@ const LoginForm = ({ history }) => {
 
   useEffect(() => {
     if (authError) {
-      console.log('login failure');
-      console.log(authError);
+      if (authError.response.status === 403)
+        setError(authError.response.data.message);
       return;
     }
     if (auth) {
@@ -56,7 +56,7 @@ const LoginForm = ({ history }) => {
       console.log('user login validated');
       history.push('/dev/DM/main');
     }
-  }, [user]);
+  }, [history, user]);
 
   return (
     <AuthForm 

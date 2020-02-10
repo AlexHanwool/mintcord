@@ -26,15 +26,6 @@ router.post('/join', isNotLoggedIn, async (req, res, next) => {
         nickname: user.nickname
       });
     });
-
-    // await User.create({
-    //   userEmail, nickname, password: hash,
-    // });
-
-    // // return res.redirect('/');
-    // return res.status(200).json({
-    //   result: "success"
-    // });
   }
   catch (error) {
     console.error(error);
@@ -50,8 +41,8 @@ router.post('/login', isNotLoggedIn, (req, res, next) => {
       return next(authError);
     }
     if (!user) {
-      console.log('user does not exist');
-      return res.status(403).send();
+      // console.log('user does not exist');
+      return res.status(403).json(info);
     }
     return req.login(user, (loginError) => {
       if (loginError) {
@@ -95,7 +86,7 @@ router.get('/logout', isLoggedIn, (req, res) => {
   req.logout();
   req.session.destroy();
   res.status(200).json({
-    result: "success",
+    message: "logout success",
   })
 });
 

@@ -39,8 +39,10 @@ const RegisterForm = () => {
 
   useEffect(() => {
     if (authError) {
-      console.log('register failure');
-      console.log(authError);
+      if (authError.response.status === 409)
+        setError('already registered Email address');
+      else 
+        setError('register failed');
       return;
     }
     if (auth) {

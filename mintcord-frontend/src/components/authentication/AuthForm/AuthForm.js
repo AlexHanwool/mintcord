@@ -5,11 +5,12 @@ import styles from './AuthForm.scss';
 import classNames from 'classnames/bind';
 
 import Button from 'components/common/Button';
+import ErrorMessage from 'components/authentication/ErrorMessage';
 
 const cx = classNames.bind(styles);
 
 const AuthForm = ({ formType, onChange, onSubmit, error }) => {
-  // TODO: error message styling
+
   const buttonText = {
     login: 'Sign In',
     register: 'Sign Up'
@@ -32,7 +33,7 @@ const AuthForm = ({ formType, onChange, onSubmit, error }) => {
         name="password"
         onChange={onChange}
         placeholder="password..." />
-      {error && <span>{error}</span>}
+      {error && <ErrorMessage>{error}</ErrorMessage>}
       <Button fullWidth onClick={onSubmit}>{buttonText[formType]}</Button>
       <div className={cx('auth-footer')} style={footerStyle}>
         { formType ==='login' ? 
