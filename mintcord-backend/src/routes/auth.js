@@ -82,15 +82,13 @@ router.get('/kakao/callback',
   res.redirect('/Lobby');
 });
 
-router.get('/logout', isLoggedIn, (req, res) => {
+router.post('/logout', isLoggedIn, (req, res) => {
   req.logout();
   req.session.destroy();
-  res.status(200).json({
-    message: "logout success",
-  })
+  return res.status(200).send();
 });
 
-router.get('/check', isLoggedIn, (req, res) => {
+router.get('/check', (req, res) => {
   const user = req.user;
   if (user) {
     return res.status(200).json({

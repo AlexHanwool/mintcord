@@ -1,7 +1,7 @@
-import { takeLatest } from 'redux-saga/effects';
+import { call, takeLatest } from 'redux-saga/effects';
 
 import { REGISTER, LOGIN } from 'store/modules/auth';
-import { CHECK } from 'store/modules/user';
+import { CHECK, LOGOUT } from 'store/modules/user';
 import * as authAPI from 'lib/api/auth';
 import createRequestSaga from 'lib/createRequestSaga';
 
@@ -9,8 +9,18 @@ const registerSaga = createRequestSaga(REGISTER, authAPI.requestRegister);
 const checkSaga = createRequestSaga(CHECK, authAPI.requestCheck);
 const loginSaga = createRequestSaga(LOGIN, authAPI.requestLogin);
 
+function* logoutSaga() {
+  try {
+    yield call(authAPI.requestLogout);
+  }
+  catch (error) {
+    console.log(error);
+  }
+} 
+
 export default function* rootSaga() {
   yield takeLatest(REGISTER, registerSaga);
   yield takeLatest(CHECK, checkSaga);
   yield takeLatest(LOGIN, loginSaga);
+  yield takeLatest(LOGOUT, logoutSaga);
 }

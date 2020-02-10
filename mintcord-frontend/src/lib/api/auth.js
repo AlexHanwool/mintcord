@@ -19,5 +19,5 @@ export const requestCheck = () => {
 }
 
 export const requestLogout = () => {
-  return client.get('/auth/logout');
+  return client.post('/auth/logout');
 }

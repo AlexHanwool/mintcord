@@ -27,9 +27,18 @@ export default handleActions({
     };
   },
   [CHECK_FAILURE]: (state, action) => {
+    const error = action.payload;
     return {
       ...state,
-      user: null
+      user: null,
+      checkError: error
     };
   },
+  [LOGOUT]: (state, action) => {
+    return {
+      ...state,
+      user: null,
+      checkError: null
+    }
+  }
 }, initialState);
