@@ -43,17 +43,17 @@ const LoginForm = ({ history }) => {
     if (authError) {
       if (authError.response.status === 403)
         setError(authError.response.data.message);
+      else 
+        setError('login failed');
       return;
     }
     if (auth) {
-      console.log('login success!');
       dispatch(check());
     }
   }, [auth, authError, dispatch]);
 
   useEffect(() => {
     if (user) {
-      console.log('user login validated');
       history.push('/dev/DM/main');
     }
   }, [history, user]);
