@@ -3,6 +3,7 @@ import createSagaMiddleware from 'redux-saga';
 
 import customHistory from 'lib/history';
 import * as modules from './modules';
+import { check } from 'store/modules/user';
 
 // TODO: middlewares like redux-logger have to be loaded
 import rootSaga from 'sagas';
@@ -25,5 +26,13 @@ export default function configure(preloadedState) {
     reducers, preloadedState, composeEnhancers(applyMiddleware(...middlewares))
   )
   sagaMiddleware.run(rootSaga);
+
+  try {
+    store.dispatch(check());
+  }
+  catch (error) {
+    console.log(error);
+  }
+    
   return store;
 }

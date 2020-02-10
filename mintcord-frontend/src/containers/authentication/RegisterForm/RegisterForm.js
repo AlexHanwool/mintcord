@@ -1,18 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 import { register, initializeForm } from 'store/modules/auth';
 import AuthForm from 'components/authentication/AuthForm';
 
-const RegisterForm = () => {
+const RegisterForm = ({ history }) => {
   const [error, setError] = useState(null);
   // TODO?: move form state to redux store to prevent blowing whole form by mistake
   const [form, setForm] = 
     useState({ userEmail: '', nickname: '', password: '' });
-  const { auth, authError } = useSelector(({ auth }) => {
+  const { auth, authError, user } = useSelector(({ auth, user }) => {
     return {
       auth: auth.auth,
-      authError: auth.authError
+      authError: auth.authError,
+      user: user.user
     };
   });
   const dispatch = useDispatch();
@@ -51,6 +53,12 @@ const RegisterForm = () => {
     }
   }, [auth, authError]);
 
+  useEffect(() => {
+    if (user) {
+      history.push('/dev/DM/main');
+    }
+  }, [history, user]);
+
   return (
     <AuthForm 
       formType="register"
@@ -61,4 +69,4 @@ const RegisterForm = () => {
   );
 };
 
-export default RegisterForm;
+export default withRouter(RegisterForm);
