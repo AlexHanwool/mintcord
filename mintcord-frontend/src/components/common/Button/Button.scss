@@ -51,6 +51,14 @@
     }
   }
 
+  &.myprofile {
+    background-color: $oc-gray-7;
+
+    & + & {
+      margin-left: 0.1rem;
+    }
+  }
+
   // theme="circle"
   &.circle {
     width: 3rem;
@@ -78,13 +86,6 @@
       }
     }
   }
-
-  // theme="circle-red"
-  // can separate sub classname?
-
-  // &:hover {
-  //   @include material-shadow(2, 0.5); // show shadow when hovered
-  // }
 
   // full width
   &.fullWidth {

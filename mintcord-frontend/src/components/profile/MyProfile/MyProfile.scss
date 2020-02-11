@@ -1,0 +1,39 @@
+@import 'styles/utils.scss';
+
+.my-profile {
+  display: flex;
+  height: 100%;
+  align-items: center;
+
+  .my-icon {
+    width: 50px;
+    text-align: center;
+    
+    img {
+      width: 36px;
+      height: 36px;
+      vertical-align: middle;
+      border-radius: 50%;
+      user-select: none;
+    }
+  }
+
+  .my-nickname {
+    flex: 1;
+    color: $oc-gray-1;
+    padding: 0.1rem;
+    cursor: pointer;
+    user-select: none;
+    .nickname {
+      font-size: 0.9rem;
+    }
+    .user-id {
+      font-size: 0.7rem;
+    }
+  }
+
+  .my-menu {
+    width: 100px;
+    text-align: center;
+  }
+}
