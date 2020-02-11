@@ -28,7 +28,7 @@ const MyProfile = ({ user, onLogout }) => {
       <div className={cx('my-menu')}>
         <Button theme="myprofile">A</Button>
         <Button theme="myprofile">B</Button>
-        <Button theme="myprofile" onCLick={onLogout}>C</Button>
+        <Button theme="myprofile" onClick={onLogout}>C</Button>
       </div>
     </div>
   );

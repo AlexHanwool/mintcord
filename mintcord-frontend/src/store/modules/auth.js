@@ -57,7 +57,8 @@ export default handleActions({
   [INITIALIZE_FORM]: (state, action) => {
     return {
       ...state,
-      authError: null
+      authError: null,
+      auth: null
     }
   }
 }, initialState);

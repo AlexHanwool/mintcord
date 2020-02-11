@@ -4,7 +4,7 @@ import styles from './DMMenu.scss';
 import classNames from 'classnames/bind';
 
 import Button from 'components/common/Button';
-import MyProfile from 'components/profile/MyProfile';
+import MyProfileContainer from 'containers/profile/MyProfileContainer';
 
 const cx = classNames.bind(styles);
 
@@ -28,7 +28,7 @@ const DMMenu = () => {
         friend3
       </div>
       <div className={cx('footer')}>
-        <MyProfile />
+        <MyProfileContainer />
       </div>
     </div>
   );
