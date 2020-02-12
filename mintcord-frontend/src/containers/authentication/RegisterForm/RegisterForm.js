@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-import { register, initializeForm } from 'store/modules/auth';
+import { register, initializeAuth } from 'store/modules/auth';
 import AuthForm from 'components/authentication/AuthForm';
 
 const RegisterForm = ({ history }) => {
@@ -36,7 +36,7 @@ const RegisterForm = ({ history }) => {
   }
 
   useEffect(() => {
-    dispatch(initializeForm());
+    dispatch(initializeAuth());
   }, [dispatch]);
 
   useEffect(() => {
@@ -47,11 +47,8 @@ const RegisterForm = ({ history }) => {
         setError('register failed');
       return;
     }
-    if (auth) {
-      console.log('register success');
-      return;
-    }
-  }, [auth, authError]);
+    // TODO: how to care register success?
+  }, [authError]);
 
   useEffect(() => {
     if (user) {

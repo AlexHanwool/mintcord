@@ -5,11 +5,11 @@ import { createRequestActionTypes } from 'lib/createRequestSaga';
 // action types
 export const [CHECK, CHECK_SUCCESS, CHECK_FAILURE] = 
   createRequestActionTypes('user/CHECK');
-export const LOGOUT = createAction('user/LOGOUT');
+const INITIALIZE_USER = 'user/INITIALIZE_USER';
 
 // action creators
 export const check = createAction(CHECK);
-export const logout = createAction(LOGOUT);
+export const initializeUser = createAction(INITIALIZE_USER);
 
 // initial state
 const initialState = {
@@ -23,7 +23,8 @@ export default handleActions({
     const user = action.payload;
     return {
       ...state,
-      user
+      user,
+      checkError: null
     };
   },
   [CHECK_FAILURE]: (state, action) => {
@@ -34,11 +35,11 @@ export default handleActions({
       checkError: error
     };
   },
-  [LOGOUT]: (state, action) => {
+  [INITIALIZE_USER]: (state, action) => {
     return {
       ...state,
       user: null,
       checkError: null
-    }
+    };
   }
 }, initialState);

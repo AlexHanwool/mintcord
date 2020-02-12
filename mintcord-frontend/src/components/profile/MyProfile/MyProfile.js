@@ -7,14 +7,8 @@ import Button from 'components/common/Button';
 
 const cx = classNames.bind(styles);
 
-const tempUser = {
-  userEmail: "abc@test.com",
-  nickname: "alphabet",
-  userId: 1234
-}
-
 const MyProfile = ({ user, onLogout }) => {
-  const { userId, nickname } = tempUser;
+  const { nickname, userId } = user;
 
   return (
     <div className={cx('my-profile')}>

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-import { login, initializeForm } from 'store/modules/auth';
-import { check } from 'store/modules/user';
+import { login, initializeAuth } from 'store/modules/auth';
+import { check, initializeUser } from 'store/modules/user';
 import AuthForm from 'components/authentication/AuthForm';
 
 const LoginForm = ({ history }) => {
@@ -16,7 +16,7 @@ const LoginForm = ({ history }) => {
       authError: auth.authError,
       user: user.user
     };
-  });
+  }, shallowEqual);
   const dispatch = useDispatch();
 
   const onChange = (event) => {
@@ -36,7 +36,7 @@ const LoginForm = ({ history }) => {
   }
   
   useEffect(() => {
-    dispatch(initializeForm());
+    dispatch(initializeAuth());
   }, [dispatch]);
 
   useEffect(() => {
@@ -54,9 +54,12 @@ const LoginForm = ({ history }) => {
 
   useEffect(() => {
     if (user) {
-      history.push('/dev/DM/main');
+      if (auth)
+        history.push('/dev/DM/main');
+      else
+        dispatch(initializeUser());
     }
-  }, [history, user]);
+  }, [history, user, dispatch]);
 
   return (
     <AuthForm 

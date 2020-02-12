@@ -17,15 +17,12 @@ router.post('/join', isNotLoggedIn, async (req, res, next) => {
     
     const hash = await bcrypt.hash(password, 8);
 
-    User.create({
+    await User.create({
       userEmail, nickname, password: hash,
     }).then(user => {
-      return res.status(200).json({
-        userId: user.userId,
-        userEmail: user.userEmail,
-        nickname: user.nickname
-      });
+      console.log(`New user registered: ${user.userEmail}`);
     });
+    return res.status(200).send();
   }
   catch (error) {
     console.error(error);
@@ -41,7 +38,6 @@ router.post('/login', isNotLoggedIn, (req, res, next) => {
       return next(authError);
     }
     if (!user) {
-      // console.log('user does not exist');
       return res.status(403).json(info);
     }
     return req.login(user, (loginError) => {
@@ -51,18 +47,11 @@ router.post('/login', isNotLoggedIn, (req, res, next) => {
       }
       // return res.redirect('/');
       // return res.status(200).json({
-      //   result: "success",
-      //   user:{
-      //     userId: user.userId,
-      //     userEmail: user.userEmail,
-      //     nickname: user.nickname
-      //   },
+      //   userId: user.userId,
+      //   userEmail: user.userEmail,
+      //   nickname: user.nickname
       // });
-      return res.status(200).json({
-        userId: user.userId,
-        userEmail: user.userEmail,
-        nickname: user.nickname
-      });
+      return res.status(200).send();
     });
   })(req, res, next);
 });
@@ -71,14 +60,7 @@ router.get('/kakao', passport.authenticate('kakao'));
 
 router.get('/kakao/callback', 
   passport.authenticate('kakao', {failureRedirect: '/'}), (req, res) => {
-  // res.status(200).redirect('/').json({
-  //   result: "success",
-  //   user:{
-  //     userId: req.user.userId,
-  //     userEmail: req.user.userEmail,
-  //     nickname: req.user.nickname
-  //   },
-  // });
+  
   res.redirect('/Lobby');
 });
 
@@ -90,6 +72,7 @@ router.post('/logout', isLoggedIn, (req, res) => {
 
 router.get('/check', (req, res) => {
   const user = req.user;
+  // TODO: have to check with kakao oauth login
   if (user) {
     return res.status(200).json({
       userId: user.userId,

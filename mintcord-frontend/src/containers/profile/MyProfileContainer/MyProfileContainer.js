@@ -1,22 +1,36 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-import { logout } from 'store/modules/user';
+import { logout } from 'store/modules/auth';
 import MyProfile from 'components/profile/MyProfile';
 
+// TODO: Forbid access without auth
 const MyProfileContainer = ({ history }) => {
 
   const dispatch = useDispatch();
 
+  const { auth, user } = useSelector(({ auth, user }) => {
+    return {
+      auth: auth.auth,
+      user: user.user
+    };
+  });
+
   const onLogout = () => {
-    console.log('onLogout clicked');
     dispatch(logout());
-    history.push('/login');
   }
 
+  // TODO: must move this function upper!
+  useEffect(() => {
+    if (!auth) {
+      history.push('/login');
+    }
+  }, [history, auth]);
+
   return (
-    <MyProfile 
+    <MyProfile
+      user={user}
       onLogout={onLogout}
     />
   );

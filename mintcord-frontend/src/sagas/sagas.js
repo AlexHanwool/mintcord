@@ -1,7 +1,7 @@
 import { call, takeLatest } from 'redux-saga/effects';
 
-import { REGISTER, LOGIN } from 'store/modules/auth';
-import { CHECK, LOGOUT } from 'store/modules/user';
+import { REGISTER, LOGIN, LOGOUT } from 'store/modules/auth';
+import { CHECK } from 'store/modules/user';
 import * as authAPI from 'lib/api/auth';
 import createRequestSaga from 'lib/createRequestSaga';
 
