@@ -1,6 +1,7 @@
 const express = require('express');
 const passport = require('passport');
 const bcrypt = require('bcryptjs');
+const chalk = require('chalk');
 
 const { isLoggedIn, isNotLoggedIn } = require('./routerMiddlewares');
 const { User } = require('../../models');
@@ -31,7 +32,7 @@ router.post('/join', isNotLoggedIn, async (req, res, next) => {
 });
 
 router.post('/login', isNotLoggedIn, (req, res, next) => {
-  console.log('client', req.session.id, 'tries to log in');
+  console.log(chalk.green('client '+req.session.id+' tries to log in'));
   passport.authenticate('local', (authError, user, info) => {
     if (authError) {
       console.error(authError);
@@ -46,11 +47,6 @@ router.post('/login', isNotLoggedIn, (req, res, next) => {
         return next(loginError);
       }
       // return res.redirect('/');
-      // return res.status(200).json({
-      //   userId: user.userId,
-      //   userEmail: user.userEmail,
-      //   nickname: user.nickname
-      // });
       return res.status(200).send();
     });
   })(req, res, next);

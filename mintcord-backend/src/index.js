@@ -43,10 +43,10 @@ app.use(sessionMiddleware);
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use('/', express.static(path.join(__dirname, '../../mintcord-frontend/build/')));
-app.get('*', function (req, res, next){
-  express.static(path.join(__dirname, '../../mintcord-frontend/build/'));
-});
+// app.use('/', express.static(path.join(__dirname, '../../mintcord-frontend/build/')));
+// app.get('*', function (req, res, next){
+//   express.static(path.join(__dirname, '../../mintcord-frontend/build/'));
+// });
 app.use('/auth', authRouter);
 
 app.use((req, res, next) => {
@@ -61,6 +61,10 @@ app.use((err, req, res, next) => {
   return res.status(err.status || 500);
   // res.render('error');
 });
+
+// app.get('*', function (req, res, next){
+//   express.static(path.join(__dirname, '../../mintcord-frontend/build/'));
+// });
 
 const server = app.listen(app.get('port'), () => {
   console.log('listnening at port', app.get('port'));
