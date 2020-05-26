@@ -10,9 +10,8 @@ const RegisterForm = ({ history }) => {
   // TODO?: move form state to redux store to prevent blowing whole form by mistake
   const [form, setForm] = 
     useState({ userEmail: '', nickname: '', password: '' });
-  const { auth, authError, user } = useSelector(({ auth, user }) => {
+  const { authError, user } = useSelector(({ auth, user }) => {
     return {
-      auth: auth.auth,
       authError: auth.authError,
       user: user.user
     };
@@ -47,11 +46,13 @@ const RegisterForm = ({ history }) => {
         setError('register failed');
       return;
     }
+    else setError(null);
     // TODO: how to care register success?
   }, [authError]);
 
   useEffect(() => {
     if (user) {
+      console.log('already signed in! >> /dev/DM/main');
       history.push('/dev/DM/main');
     }
   }, [history, user]);

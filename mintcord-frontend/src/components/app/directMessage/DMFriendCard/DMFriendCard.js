@@ -32,7 +32,7 @@ const DMFriendCard = ({ friend }) => {
       onMouseLeave={toggleMenu}
     >
       <div className={cx('friend-icon')}>
-        <img src="/icons/icon-person-anon.png" />
+        <img src="/icons/icon-person-anon.png" alt="" />
       </div>
       <div className={cx('friend-name')}>
         {nickname}

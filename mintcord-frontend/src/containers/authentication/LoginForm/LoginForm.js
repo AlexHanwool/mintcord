@@ -47,6 +47,8 @@ const LoginForm = ({ history }) => {
         setError('login failed');
       return;
     }
+    else setError(null);
+    
     if (auth) {
       dispatch(check());
     }
@@ -59,7 +61,7 @@ const LoginForm = ({ history }) => {
       else
         dispatch(initializeUser());
     }
-  }, [history, user, dispatch]);
+  }, [history, user, auth, dispatch]);
 
   return (
     <AuthForm 

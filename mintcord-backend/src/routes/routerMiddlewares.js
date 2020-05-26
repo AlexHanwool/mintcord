@@ -10,6 +10,6 @@ exports.isNotLoggedIn = (req, res, next) => {
   if (!req.isAuthenticated()) next();
   else res.json({
     result: "failure",
-    message: "please log in first",
+    message: "please logout first",
   });
 }

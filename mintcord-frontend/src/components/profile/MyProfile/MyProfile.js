@@ -13,7 +13,7 @@ const MyProfile = ({ user, onLogout }) => {
   return (
     <div className={cx('my-profile')}>
       <div className={cx('my-icon')}>
-        <img src="/icons/icon-person-anon.png" />
+        <img src="/icons/icon-person-anon.png" alt="" />
       </div>
       <div className={cx('my-nickname')}>
         <div className={cx('nickname')}>{nickname}</div>

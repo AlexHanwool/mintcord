@@ -21,7 +21,7 @@ const Template = () => {
 			<div className={cx('left', { onSide } )}>
 				<div className= {cx('icon')}
 					onClick={toggleSidebar} >
-					<img src="/main-icon.png" />
+					<img src="/main-icon.png" alt="" />
 				</div>
 				<div className={cx('sidebar', { onSide } )}>
 					<div className={cx('row')}>	

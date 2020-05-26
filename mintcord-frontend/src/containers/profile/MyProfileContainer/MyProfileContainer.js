@@ -24,11 +24,12 @@ const MyProfileContainer = ({ history }) => {
   // TODO: must move this function upper!
   useEffect(() => {
     if (!auth) {
+      console.log('unauthorized >> /login');
       history.push('/login');
     }
   }, [history, auth]);
 
-  return (
+  return (auth &&
     <MyProfile
       user={user}
       onLogout={onLogout}

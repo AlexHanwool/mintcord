@@ -16,7 +16,7 @@ const DMMenu = () => {
       </div>
       <div className={cx('main')}>
         <Button fullWidth to="/dev/DM/main">
-          <img src="/icons/icon-friends.svg" />
+          <img src="/icons/icon-friends.svg" alt="" />
           <div style={{flex:0.7}}>Friends</div>
         </Button>
         <div className={cx('dm-add')}>
