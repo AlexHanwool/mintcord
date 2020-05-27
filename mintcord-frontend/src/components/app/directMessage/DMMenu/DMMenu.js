@@ -4,7 +4,7 @@ import styles from './DMMenu.scss';
 import classNames from 'classnames/bind';
 
 import Button from 'components/common/Button';
-import MyProfileContainer from 'containers/profile/MyProfileContainer';
+import MyProfileContainer from 'containers/profile/MyProfileContainer.js';
 
 const cx = classNames.bind(styles);
 

@@ -1,8 +1,7 @@
 import React from 'react';
 
 import AuthTemplate from 'components/authentication/AuthTemplate';
-// import AuthForm from 'components/authentication/AuthForm';
-import LoginForm from 'containers/authentication/LoginForm';
+import LoginForm from 'containers/authentication/LoginForm.js';
 
 const LoginPage = () => {
   return (

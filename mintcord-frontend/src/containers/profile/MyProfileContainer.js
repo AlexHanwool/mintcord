@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 import { logout } from 'store/modules/auth';
+import { showModal } from 'store/modules/base';
 import MyProfile from 'components/profile/MyProfile';
 
 // TODO: Forbid access without auth
@@ -20,6 +21,12 @@ const MyProfileContainer = ({ history }) => {
   const onLogout = () => {
     dispatch(logout());
   }
+  const onInfo = () => {
+    dispatch(showModal('info'));
+  }
+  const onAddFriend = () => {
+    dispatch(showModal('addFriend'));
+  }
 
   // TODO: must move this function upper!
   useEffect(() => {
@@ -32,6 +39,8 @@ const MyProfileContainer = ({ history }) => {
   return (auth &&
     <MyProfile
       user={user}
+      onInfo={onInfo}
+      onAddFriend={onAddFriend}
       onLogout={onLogout}
     />
   );

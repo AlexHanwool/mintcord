@@ -1,7 +1,7 @@
 import React from 'react';
 
 import AuthTemplate from 'components/authentication/AuthTemplate';
-import RegisterForm from 'containers/authentication/RegisterForm';
+import RegisterForm from 'containers/authentication/RegisterForm.js';
 
 const JoinPage = () => {
   return (

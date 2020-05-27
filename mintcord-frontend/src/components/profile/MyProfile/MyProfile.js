@@ -7,7 +7,7 @@ import Button from 'components/common/Button';
 
 const cx = classNames.bind(styles);
 
-const MyProfile = ({ user, onLogout }) => {
+const MyProfile = ({ user, onInfo, onAddFriend, onLogout }) => {
   const { nickname, userId } = user;
 
   return (
@@ -20,8 +20,8 @@ const MyProfile = ({ user, onLogout }) => {
         <div className={cx('user-id')}>#{userId}</div>
       </div>
       <div className={cx('my-menu')}>
-        <Button theme="myprofile">A</Button>
-        <Button theme="myprofile">B</Button>
+        <Button theme="myprofile" onClick={onInfo}>A</Button>
+        <Button theme="myprofile" onClick={onAddFriend}>B</Button>
         <Button theme="myprofile" onClick={onLogout}>C</Button>
       </div>
     </div>
