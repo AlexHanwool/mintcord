@@ -19,3 +19,9 @@
     @warn "$z-depth must be between 1 and 5";
   }
 }
+
+@mixin flex-arrange ($flex-direction) {
+	display: flex;
+	flex-direction: #{$flex-direction};
+	justify-content: center;
+}

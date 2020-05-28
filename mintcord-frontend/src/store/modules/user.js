@@ -14,6 +14,7 @@ export const initializeUser = createAction(INITIALIZE_USER);
 // initial state
 const initialState = {
   user: null,
+  isChecked: false, // toggle once at initial check
   checkError: null,
 };
 

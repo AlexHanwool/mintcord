@@ -2,9 +2,7 @@
 
 .channels {
 	width: 100%;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
+	@include flex-arrange('column');
 
 	background: $oc-gray-9; 
 	

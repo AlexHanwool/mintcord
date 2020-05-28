@@ -2,9 +2,10 @@
 
 .users {
 	width: 100%;
-	display: flex;
-	flex-direction: column;
-	justify-content: center; 
+	@include flex-arrange('column');
+	// display: flex;
+	// flex-direction: column;
+	// justify-content: center; 
 	background: $oc-gray-8; 
 	
 	// &:hover {

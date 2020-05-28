@@ -1,0 +1,53 @@
+@import 'styles/utils.scss';
+
+.message-box {
+	@include flex-arrange('row');
+	$icon-size: 40px;
+
+	background-color: darken($oc-gray-7, 2);
+
+	margin-bottom: 5px;
+	padding: 0.25rem;
+ 	border-radius: 0.25rem;
+
+	 &.me {
+		display: flex;
+		background-color: $oc-gray-3;
+	}
+
+	.chat-content {
+		flex: 1;
+
+		.chat-info {
+			@include flex-arrange('row');
+			font-size: 0.8rem;
+			color: $oc-gray-5;
+
+			.user {
+				flex: 0.3;
+			}
+
+			.time-stamp {
+				flex: 0.7;
+			}
+		}
+
+		.chat-message {
+			color: white;
+			// font-size: 1.5rem;
+
+			&:hover {
+				//TODO: Present icon list
+			}
+		}
+	}
+
+	img {
+		width: $icon-size;
+		height: $icon-size;
+		border-radius: 50%;
+		margin-left: auto;
+		margin-right: auto;
+		justify-content: left;
+	}
+} 

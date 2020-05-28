@@ -5,7 +5,7 @@ import classNames from 'classnames/bind';
 
 import Users from 'components/Users';
 import Channels from 'components/Channels';
-import Chat from 'components/Chat';
+import ChatContainer from 'containers/ChatContainer';
 
 const cx = classNames.bind(styles);
 
@@ -36,7 +36,7 @@ const Template = () => {
 					Main header
 				</div>
 				<div className= {cx('content')}>
-					<Chat />
+					<ChatContainer />
 				</div>
 			</div>
 		</div>

@@ -1,9 +1,11 @@
 @import 'styles/utils.scss';
 
-.chat {
-	.chat-log {
-		background: $oc-yellow-0;
-	}
+.chat-board {
+	width: 100%;
+
+	// .chat-log {
+	// 	background: $oc-yellow-0;
+	// }
 
 	input {
 		outline: none;
