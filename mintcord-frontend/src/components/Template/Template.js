@@ -5,7 +5,7 @@ import classNames from 'classnames/bind';
 
 import Users from 'components/Users';
 import Channels from 'components/Channels';
-import ChatContainer from 'containers/ChatContainer';
+import ChatContainer from 'containers/chat/ChatContainer';
 
 const cx = classNames.bind(styles);
 

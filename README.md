@@ -3,11 +3,14 @@ discord clone project with react
 
 ## mintcord-backend
 based on node.js and express
-database is constructed with mysql and sequelize
+install mysql first, and create
 ```bash
 $ cd mintcord-backend
-$ npm install; npm install -g sequelize
-$ npm start
+$ npm install
+$ npm install -g sequelize
+$ mv ./config/config.example.json ./config/config.json
+$ mv .example.env .env
+$ npm run dev
 ```
 
 ## mintcord-frontend

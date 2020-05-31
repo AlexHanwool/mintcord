@@ -12,6 +12,7 @@ require('dotenv').config();
 const passportConfig = require('./passport');
 
 const authRouter = require('./routes/auth');
+const userRouter = require('./routes/user');
 
 const app = express();
 sequelize.sync();
@@ -48,6 +49,7 @@ app.use(passport.session());
 //   express.static(path.join(__dirname, '../../mintcord-frontend/build/'));
 // });
 app.use('/auth', authRouter);
+app.use('/user', userRouter);
 
 app.use((req, res, next) => {
   const err = new Error('Not Found');

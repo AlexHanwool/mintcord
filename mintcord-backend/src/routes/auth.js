@@ -21,7 +21,7 @@ router.post('/join', isNotLoggedIn, async (req, res, next) => {
     await User.create({
       userEmail, nickname, password: hash,
     }).then(user => {
-      console.log(`New user registered: ${user.userEmail}`);
+      console.log(chalk.green(`New user registered: ${chalk.blue(user.userEmail)}, ${chalk.blue(user.nickname)}`));
     });
     return res.status(200).send();
   }
@@ -32,7 +32,7 @@ router.post('/join', isNotLoggedIn, async (req, res, next) => {
 });
 
 router.post('/login', isNotLoggedIn, (req, res, next) => {
-  console.log(chalk.green('client '+req.session.id+' tries to log in'));
+  console.log(chalk.green(`client ${chalk.blue(req.session.id)} tries to log in`));
   passport.authenticate('local', (authError, user, info) => {
     if (authError) {
       console.error(authError);

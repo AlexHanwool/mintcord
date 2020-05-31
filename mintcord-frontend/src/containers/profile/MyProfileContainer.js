@@ -19,6 +19,7 @@ const MyProfileContainer = ({ history }) => {
   });
 
   const onLogout = () => {
+    // clean up all redux store
     dispatch(logout());
   }
   const onInfo = () => {

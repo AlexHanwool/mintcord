@@ -8,28 +8,28 @@ import { RemoveIcon, MessageIcon, CallIcon } from 'icons';
 
 const cx = classNames.bind(styles);
 
-const DMFriendCard = ({ friend }) => {
+const DMFriendCard = ({ friend, onClickChat, onClickRemove }) => {
 
   const [ isHover, setIsHover ] = useState(false);
   const { nickname, userId } = friend;
-  // TODO: get userIcon from userId?
+  // TODO: save personal icon at friend object
 
-  const toggleMenu = (event) => {
-    setIsHover(!isHover);
+  const handleHover = (isEnter) => {
+    setIsHover(isEnter);
   }
 
   const menuButtonSet = isHover?
     <>
-      <Button theme="circle"><MessageIcon /></Button>
+      <Button theme="circle" onClick={onClickChat}><MessageIcon /></Button>
       <Button theme="circle"><CallIcon /></Button>
-      <Button theme={["circle", "hover-red"]}><RemoveIcon /></Button>
+      <Button theme={["circle", "hover-red"]} onClick={() => onClickRemove(friend)}><RemoveIcon /></Button>
     </>
     : null;
 
   return (
     <div className={cx('friend-card')}
-      onMouseEnter={toggleMenu}
-      onMouseLeave={toggleMenu}
+      onMouseEnter={() => handleHover(true)}
+      onMouseLeave={() => handleHover(false)}
     >
       <div className={cx('friend-icon')}>
         <img src="/icons/icon-person-anon.png" alt="" />

@@ -8,7 +8,7 @@ import Button from 'components/common/Button';
 
 const cx = classNames.bind(styles);
 
-const AddFriendModal = ({ visible, onAdd, onCancel }) => (
+const AddFriendModal = ({ visible, onAdd, onCancel, onChange }) => (
   <ModalWrapper visible={visible}>
     <div className={cx('add-friend')}>
       <div className={cx('title')}></div>
@@ -16,6 +16,7 @@ const AddFriendModal = ({ visible, onAdd, onCancel }) => (
         <input
           type='text'
           placeholder="nickname#0000"
+          onChange={onChange}
         />
       </div>
     </div>

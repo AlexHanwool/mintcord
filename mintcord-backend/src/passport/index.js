@@ -6,10 +6,14 @@ module.exports = (passport) => {
   passport.serializeUser((user, done) => {
     done(null, user.userId);
   });
-  passport.deserializeUser((userId, done) => {
-    User.findOne({ where: { userId } })
-      .then(user => done(null, user))
-      .catch(err => done(err));
+  passport.deserializeUser(async (userId, done) => {
+    try {
+      const user = await User.findOne({ where: { userId } });
+      await done(null, user);
+    }
+    catch (error) {
+      done(err);
+    }
   });
 
   local(passport);
