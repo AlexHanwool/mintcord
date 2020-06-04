@@ -22,7 +22,6 @@ export const getFriendsList = createAction(GET_FRIENDS_LIST);
 // initial state
 const initialState = {
   user: null,
-  isChecked: false, // toggle once at initial check
   checkError: null,
   friendsList: [],
 };

@@ -1,6 +1,14 @@
 @import 'styles/utils.scss';
 
 .dm-chat-area {
+  $header-height: 4rem;
+  
   flex: 1;
   background: $oc-gray-6;
+
+  .header {
+    height: $header-height;
+		text-align: center;
+		font-size: 1.5rem;
+  }
 }

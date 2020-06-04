@@ -6,7 +6,7 @@ const { User } = require('../../models');
 
 const router = express.Router();
 
-router.post('/addFriend', isLoggedIn, async (req, res) => {
+router.post('/addFriend', isLoggedIn, async (req, res, next) => {
   const { userEmail, userId, nickname } = req.user;
   const { targetNick, targetId } = req.body;
   try {
@@ -18,6 +18,14 @@ router.post('/addFriend', isLoggedIn, async (req, res) => {
         result: 'failure',
         message: `${targetNick}#${targetId} is invalid`
       });
+    }
+    const checkFollowing = await targetUser.hasFollowing(userId);
+    if (checkFollowing) {
+      console.log(chalk.green(`${chalk.blue(nickname)} is already friend with ${chalk.blue(targetNick)}`));
+      return res.status(200).json({
+        result: 'failure',
+        message: `already friend with ${targetNick}#${targetId}`
+      }); 
     }
     await targetUser.addFollowings(userId);
     const exUser = await User.findOne({where: { userEmail }});
@@ -32,7 +40,7 @@ router.post('/addFriend', isLoggedIn, async (req, res) => {
   }
 });
 
-router.post('/removeFriend', isLoggedIn, async (req, res) => {
+router.post('/removeFriend', isLoggedIn, async (req, res, next) => {
   const { userEmail, nickname, userId } = req.user;
   const { targetNick, targetId } = req.body;
   try {
@@ -55,7 +63,7 @@ router.post('/removeFriend', isLoggedIn, async (req, res) => {
   }
 });
 
-router.get('/getFriendsList', isLoggedIn, async (req, res) => {
+router.get('/getFriendsList', isLoggedIn, async (req, res, next) => {
   const { userEmail } = req.user;
 
   try {

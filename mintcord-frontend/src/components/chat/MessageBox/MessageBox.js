@@ -5,13 +5,13 @@ import classNames from 'classnames/bind';
 
 const cx = classNames.bind(styles);
 
-const MessageBox = ({ me, time, log }) => {
+const MessageBox = ({ time, log }) => {
 
 	const { sender, message } = log;
 	return (
 		<div className={cx('message-box')}>
 			<div className={cx('user-icon')}>
-				<img src="/favicon.ico" alt="temp icon"/>
+				<img src="/favicon.ico" alt="user icon"/>
 			</div>
 			<div className={cx('chat-content')}>
 				<div className={cx('chat-info')}>

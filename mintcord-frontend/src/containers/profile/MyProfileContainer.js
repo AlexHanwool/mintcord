@@ -14,9 +14,10 @@ const MyProfileContainer = ({ history }) => {
   const { auth, user } = useSelector(({ auth, user }) => {
     return {
       auth: auth.auth,
-      user: user.user
+      user: user.user,
     };
   });
+  const checkLoading = useSelector(({ loading }) => loading['user/CHECK']);
 
   const onLogout = () => {
     // clean up all redux store
@@ -31,11 +32,11 @@ const MyProfileContainer = ({ history }) => {
 
   // TODO: must move this function upper!
   useEffect(() => {
-    if (!auth) {
+    if (checkLoading === false && !auth) {
       console.log('unauthorized >> /login');
       history.push('/login');
     }
-  }, [history, auth]);
+  }, [history, auth, checkLoading]);
 
   return (auth &&
     <MyProfile

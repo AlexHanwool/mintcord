@@ -1,41 +1,28 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-
-import * as chatActions from 'store/modules/chat';
+import React, { useState } from 'react';
+// import { useSelector } from 'react-redux';
 
 import ChatBoard from 'components/chat/ChatBoard';
 
+const dummyChatLogs = [{ sender: 'system', message: 'hello, mint chat!' }];
 
-class ChatContainer extends Component {
+const ChatContainer = () => {
+  const [message, setMessage ] = useState('');
+  // const { chatLogs } = useSelector(({ chat }) => chat.chatLogs);
 
-  handleSendMessage = (message) => {
-    const { ChatActions } = this.props;
-    //ChatActions.sendMessage(message);
-    ChatActions.receiveMessage({sender: 'system', message: message});
+  const handleClickSend = () => {
+    console.log(`send ${message}`);
+  }
+  const handleMessage = (event) => {
+    setMessage(event.target.value);
   }
 
-  render() {
-    const { socketid, users, chatLogs } = this.props;
-    const { handleSendMessage } = this;
-
-    return (
-      <ChatBoard
-        socketid={socketid}
-        users={users}
-        chatLogs={chatLogs}
-        handleSendMessage={handleSendMessage}/>
-    );
-  }
+  return (
+    <ChatBoard
+      chatLogs={dummyChatLogs}
+      onChangeMessage={handleMessage}
+      onClickSend={handleClickSend}
+    />
+  );
 }
 
-export default connect(
-  (state) => ({
-    socketid: state.chat.socketid,
-    users: state.chat.users,
-    chatLogs: state.chat.chatLogs,
-  }),
-  (dispatch) => ({
-    ChatActions: bindActionCreators(chatActions, dispatch),
-  })
-)(ChatContainer);
+export default ChatContainer;
