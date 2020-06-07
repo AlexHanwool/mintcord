@@ -20,7 +20,7 @@ const DMFriendCard = ({ friend, onClickChat, onClickRemove }) => {
 
   const menuButtonSet = isHover?
     <>
-      <Button theme="circle" onClick={onClickChat}><MessageIcon /></Button>
+      <Button theme="circle" onClick={() => onClickChat(userId)}><MessageIcon /></Button>
       <Button theme="circle"><CallIcon /></Button>
       <Button theme={["circle", "hover-red"]} onClick={() => onClickRemove(friend)}><RemoveIcon /></Button>
     </>

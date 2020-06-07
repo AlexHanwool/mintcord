@@ -11,7 +11,7 @@ db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
 db.User = require('./user')(sequelize, Sequelize);
-// db.Chatlog = require('./chatlog')(sequelize, Sequelize);
+db.Chatlog = require('./chatlog')(sequelize, Sequelize);
 
 db.User.belongsToMany(db.User, {
   foreignKey: 'followingId',

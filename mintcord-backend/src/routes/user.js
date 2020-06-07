@@ -44,6 +44,7 @@ router.post('/removeFriend', isLoggedIn, async (req, res, next) => {
   const { userEmail, nickname, userId } = req.user;
   const { targetNick, targetId } = req.body;
   try {
+    // TODO: using await function more efficient way
     await User.findOne({where: { userEmail }})
       .then(user => {
         if (user.hasFollowing(targetId))

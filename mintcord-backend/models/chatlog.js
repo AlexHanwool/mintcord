@@ -19,10 +19,6 @@ module.exports = (sequelize, DataTypes) => (
       type: DataTypes.STRING(255),
       allowNull: false,
     },
-    // isEdited: {   // necessary? compared timestamp could replace with...
-    //   type: DataTypes.BOOLEAN,
-    //   allowNull: true,
-    // }
   }, {
     timestamps: true,
     paranoid: true,

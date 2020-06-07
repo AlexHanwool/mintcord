@@ -1,11 +1,16 @@
-import { call, put, takeLatest } from 'redux-saga/effects';
+import { call, put, takeLatest, take, fork } from 'redux-saga/effects';
 
-import { REGISTER, LOGIN, LOGOUT } from 'store/modules/auth';
-import { CHECK, ADD_FRIEND, GET_FRIENDS_LIST, REMOVE_FRIEND } from 'store/modules/user';
 import * as authAPI from 'lib/api/auth';
 import * as userAPI from 'lib/api/user';
 import createRequestSaga from 'lib/createRequestSaga';
+import connect from 'lib/socket';
+
+import { createSocketChannel } from './createSocketChannel';
+
+import { REGISTER, LOGIN, LOGOUT } from 'store/modules/auth';
+import { CHECK, ADD_FRIEND, GET_FRIENDS_LIST, REMOVE_FRIEND } from 'store/modules/user';
 import { startLoading, finishLoading } from 'store/modules/loading';
+import { SEND_MESSAGE } from 'store/modules/chat';
 
 const registerSaga = createRequestSaga(REGISTER, authAPI.requestRegister);
 // const checkSaga = createRequestSaga(CHECK, authAPI.requestCheck);
@@ -49,7 +54,32 @@ function* checkSaga(action) {
   yield put(finishLoading(CHECK));
 }
 
+function* onMessage(socket, type) {
+  const channel = yield call(createSocketChannel, socket, type);
+
+  while (true) {
+    try {
+      const message = yield take(channel);
+      // console.log(message);
+
+      // yield put(receiveMessage(message));
+    } catch (error) {
+      console.error(error);
+    }
+  }
+}
+
+function* sendMessageSaga(socket, type) {
+  while (true) {
+    const { payload } = yield take(SEND_MESSAGE);
+    socket.emit(type, payload);
+  }
+}
+
 export default function* rootSaga() {
+  // move this to store configure step?
+  const socket = yield call(connect);
+
   yield takeLatest(REGISTER, registerSaga);
   yield takeLatest(CHECK, checkSaga);
   yield takeLatest(LOGIN, loginSaga);
@@ -57,4 +87,8 @@ export default function* rootSaga() {
   yield takeLatest(ADD_FRIEND, addFriendSaga);
   yield takeLatest(REMOVE_FRIEND, removeFriendSaga);
   yield takeLatest(GET_FRIENDS_LIST, getFriendsListSaga);
+
+  // takeLatest?
+  yield fork(onMessage, socket, 'chat-msg-server');
+  yield fork(sendMessageSaga, socket, 'chat-msg-client');
 }

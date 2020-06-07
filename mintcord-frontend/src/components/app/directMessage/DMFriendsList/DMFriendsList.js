@@ -9,7 +9,7 @@ import { getFriendsList, removeFriend } from 'store/modules/user';
 
 const cx = classNames.bind(styles);
 
-const DMFriendsList = () => {
+const DMFriendsList = ({ history }) => {
   const [friendsCardList, setFriendsCardList] = useState([]);
   const { auth, friendsList } = useSelector(({ auth, user }) => {
     return {
@@ -51,8 +51,9 @@ const DMFriendsList = () => {
     dispatch(removeFriend({targetNick: target.nickname, targetId: target.userId}));
   }
 
-  const handleChat = () => {
+  const handleChat = (targetId) => {
     console.log('go to direct message page');
+    history.push(`/dev/DM/@${targetId}`);
   }
 
   return (
