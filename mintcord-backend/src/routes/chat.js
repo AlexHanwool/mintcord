@@ -1,17 +1,26 @@
 const express = require('express');
-const chalk = require('chalk');
+const { Op } = require("sequelize");
 
 const { isLoggedIn } = require('./routerMiddlewares');
-const { User, Chatlog } = require('../../models');
+const { Chatlog } = require('../../models');
 
 const router = express.Router();
 
-router.get('/chatLogs', isLoggedIn, async (req, res, next) => {
-  const { userEmail } = req.user;
+router.get('/chatLogs/:friendId', isLoggedIn, async (req, res, next) => {
+  const { userId } = req.user;
+  const friendId = req.params.friendId;
 
   try {
-    const exUser = await User.findOne({where: { userEmail }});
-    return res.status(200).json();
+    const chatlogs = await Chatlog.findAll({
+      where: {
+        [Op.or]: [
+          { senderId: userId, receiverId: friendId },
+          { senderId: friendId, receiverId: userId }
+        ]
+      } 
+    });
+
+    return res.status(200).json(chatlogs);
   }
   catch (error) {
     console.error(error);

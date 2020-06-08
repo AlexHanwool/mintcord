@@ -13,6 +13,7 @@ const passportConfig = require('./passport');
 
 const authRouter = require('./routes/auth');
 const userRouter = require('./routes/user');
+const chatRouter = require('./routes/chat');
 
 const app = express();
 sequelize.sync();
@@ -50,6 +51,7 @@ app.use(passport.session());
 // });
 app.use('/auth', authRouter);
 app.use('/user', userRouter);
+app.use('/chat', chatRouter);
 
 app.use((req, res, next) => {
   const err = new Error('Not Found');

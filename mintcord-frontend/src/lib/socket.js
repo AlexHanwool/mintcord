@@ -7,7 +7,7 @@ const connect = () => {
     socket.on('connect', () => {
       console.log('socket connect');
       resolve(socket);
-    })
+    });
   })
 }
 

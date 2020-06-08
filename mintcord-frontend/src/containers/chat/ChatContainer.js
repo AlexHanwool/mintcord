@@ -1,27 +1,36 @@
-import React, { useState } from 'react';
-// import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import ChatBoard from 'components/chat/ChatBoard';
+import { sendMessage, getChatLogs } from 'store/modules/chat';
 
-const dummyChatLogs = [{ sender: 'system', message: 'hello, mint chat!' }];
+const ChatContainer = ({ receiverId }) => {
+  const chatLogs = useSelector(({ chat }) => chat[receiverId]);
+  const dispatch = useDispatch();
 
-const ChatContainer = () => {
-  const [message, setMessage ] = useState('');
-  // const { chatLogs } = useSelector(({ chat }) => chat.chatLogs);
+  useEffect(() => {
+    if (!chatLogs) {
+      console.log(chatLogs);
+      dispatch(getChatLogs(receiverId));
+    }
+  }, [dispatch, chatLogs, receiverId]);
 
-  const handleClickSend = () => {
-    console.log(`send ${message}`);
-  }
-  const handleMessage = (event) => {
-    setMessage(event.target.value);
+  const handleClickSend = (message) => {
+    const payload = {
+      receiverId,
+      message
+    }
+    dispatch(sendMessage(payload));
   }
 
   return (
-    <ChatBoard
-      chatLogs={dummyChatLogs}
-      onChangeMessage={handleMessage}
-      onClickSend={handleClickSend}
-    />
+    <>
+    {chatLogs? 
+      <ChatBoard
+        chatLogs={chatLogs}
+        onClickSend={handleClickSend}
+      /> : null}
+    </>
   );
 }
 

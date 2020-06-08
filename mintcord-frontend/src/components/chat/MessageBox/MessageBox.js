@@ -5,9 +5,10 @@ import classNames from 'classnames/bind';
 
 const cx = classNames.bind(styles);
 
-const MessageBox = ({ time, log }) => {
+const MessageBox = ({ chatlog }) => {
+	// const { senderId, receiverId, messageContent } = chatlog;
+	const { messageContent } = chatlog;
 
-	const { sender, message } = log;
 	return (
 		<div className={cx('message-box')}>
 			<div className={cx('user-icon')}>
@@ -15,10 +16,10 @@ const MessageBox = ({ time, log }) => {
 			</div>
 			<div className={cx('chat-content')}>
 				<div className={cx('chat-info')}>
-					<div className={cx('user')}> {sender} </div>
-					<div className={cx('time-stamp')}> {time} </div>
+					<div className={cx('user')}>  </div>
+					<div className={cx('time-stamp')}>  </div>
 				</div>
-				<div className={cx('chat-message')}> {message} </div>
+				<div className={cx('chat-message')}> {messageContent} </div>
 			</div>
 		</div>
 	);
