@@ -5,6 +5,7 @@ import ChatBoard from 'components/chat/ChatBoard';
 import { sendMessage, getChatLogs } from 'store/modules/chat';
 
 const ChatContainer = ({ receiverId }) => {
+  const userId = useSelector(({ user }) => user.user? user.user.userId : null);
   const chatLogs = useSelector(({ chat }) => chat[receiverId]);
   const dispatch = useDispatch();
 
@@ -17,6 +18,7 @@ const ChatContainer = ({ receiverId }) => {
 
   const handleClickSend = (message) => {
     const payload = {
+      senderId: userId,
       receiverId,
       message
     }

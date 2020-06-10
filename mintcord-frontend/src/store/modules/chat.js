@@ -6,6 +6,7 @@ import { createRequestActionTypes } from 'lib/createRequestSaga';
 export const CONNECT_SOCKET = 'chat/CONNECT_SOCKET';
 export const SEND_MESSAGE = 'chat/SEND_MESSAGE';
 export const RECEIVE_MESSAGE = 'chat/RECEIVE_MESSAGE';
+export const MESSAGE_COMMITTED = 'chat/MESSAGE_COMMITTED';
 export const [GET_CHAT_LOGS, GET_CHAT_LOGS_SUCCESS, GET_CHAT_LOGS_FAILURE] = 
   createRequestActionTypes('chat/GET_CHAT_LOGS');
 
@@ -17,7 +18,6 @@ export const getChatLogs = createAction(GET_CHAT_LOGS);
 
 const initialState = { 
   // count: 0,
-  
 };
 
 // reducer
@@ -30,10 +30,25 @@ export default handleActions({
       [friendId]: chatlogs
     };
   },
+  [MESSAGE_COMMITTED]: (state, action) => {
+    const { receiverId } = action.payload;
+    let newChatLogs;
+    if (state[receiverId]) {
+      newChatLogs = state[receiverId].slice();
+      newChatLogs.push(action.payload);
+    }
+    else {
+      newChatLogs = [action.payload];
+    }
+
+    return {
+      ...state,
+      [receiverId]: newChatLogs
+    };
+  },
   [RECEIVE_MESSAGE]: (state, action) => {
     const { senderId } = action.payload;
     let newChatLogs;
-    // console.log(action.payload);
     if (state[senderId]) {
       newChatLogs = state[senderId].slice();
       newChatLogs.push(action.payload);

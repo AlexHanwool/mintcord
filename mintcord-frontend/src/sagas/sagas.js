@@ -11,7 +11,7 @@ import { createSocketChannel } from './createSocketChannel';
 import { REGISTER, LOGIN, LOGOUT } from 'store/modules/auth';
 import { CHECK, ADD_FRIEND, GET_FRIENDS_LIST, REMOVE_FRIEND } from 'store/modules/user';
 import { startLoading, finishLoading } from 'store/modules/loading';
-import { CONNECT_SOCKET, SEND_MESSAGE, RECEIVE_MESSAGE, GET_CHAT_LOGS } from 'store/modules/chat';
+import { CONNECT_SOCKET, SEND_MESSAGE, RECEIVE_MESSAGE, MESSAGE_COMMITTED, GET_CHAT_LOGS } from 'store/modules/chat';
 
 const registerSaga = createRequestSaga(REGISTER, authAPI.requestRegister);
 const loginSaga = createRequestSaga(LOGIN, authAPI.requestLogin);
@@ -89,13 +89,9 @@ function* onMessage(socket, type) {
   while (true) {
     try {
       const payload = yield take(channel);
-      // console.log(`from server: ${payload.messageContent}`);
-
-      yield put({
-        type: RECEIVE_MESSAGE,
-        payload
-      });
-    } catch (error) {
+      yield put({ type, payload });
+    } 
+    catch (error) {
       console.error(error);
     }
   }
@@ -110,8 +106,9 @@ function* sendMessageSaga(socket, type) {
 
 function* connectSocketSaga() {
   const socket = yield call(connect);
-  yield fork(onMessage, socket, 'chat-msg-server');
   yield fork(sendMessageSaga, socket, 'chat-msg-client');
+  yield fork(onMessage, socket, RECEIVE_MESSAGE);
+  yield fork(onMessage, socket, MESSAGE_COMMITTED);
 }
 
 export default function* rootSaga() {

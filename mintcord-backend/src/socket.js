@@ -35,8 +35,9 @@ module.exports = (server, app, sessionMiddleware) => {
           receiverId,
           messageContent: message
         }).then(chatlog => {
+          socket.emit('chat/MESSAGE_COMMITTED', chatlog);
           if (connectedUsers[receiverId]) {
-            socket.to(connectedUsers[receiverId]).emit('chat-msg-server', chatlog);
+            socket.to(connectedUsers[receiverId]).emit('chat/RECEIVE_MESSAGE', chatlog);
           }
         });
       }
