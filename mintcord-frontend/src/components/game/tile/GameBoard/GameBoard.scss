@@ -1,0 +1,12 @@
+@import 'styles/utils.scss';
+
+.game-board {
+  padding: 1rem;
+
+  .grid-area {
+    border: 0.1rem solid $oc-gray-5;
+    border-radius: 0.1rem;
+    overflow: auto;
+    position: relative;
+  }
+}

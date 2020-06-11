@@ -1,0 +1,25 @@
+@import 'styles/utils.scss';
+
+.game-scene-template {
+  flex: 1;
+  display: flex;
+  position: relative;
+
+  .pane {
+    min-width: 20%;
+
+    // scroll bar
+    overflow: auto;
+  }
+
+  .separator {
+    height: 100%;
+    position: absolute;
+    transform: translate(-50%);
+    cursor: col-resize;
+    
+    // to see clearly
+    width: 0.15rem;
+    background: $oc-gray-4;
+  }
+}

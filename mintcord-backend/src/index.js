@@ -46,12 +46,13 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // app.use('/', express.static(path.join(__dirname, '../../mintcord-frontend/build/')));
-// app.get('*', function (req, res, next){
-//   express.static(path.join(__dirname, '../../mintcord-frontend/build/'));
-// });
 app.use('/auth', authRouter);
 app.use('/user', userRouter);
 app.use('/chat', chatRouter);
+// app.get('*', (req, res, next) => {
+//   if (req.path.split('/')[1] === 'static') return next();
+//   res.sendFile(path.resolve(__dirname, '../../mintcord-frontend/build/index.html'));
+// });
 
 app.use((req, res, next) => {
   const err = new Error('Not Found');
